@@ -1,22 +1,35 @@
 import styled from "styled-components";
 import { cores } from '../../styles';
 
+export const Container = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1024px;
+`
+export const ContainerMassa = styled.div`
+  width: 100%;
+  display: grid;
+  align-items: self-start;
+  justify-content: space-around;
+  max-width: 1010px;
+
+`
 
 
 export const ImagemFundo = styled.header`
   width: 100%;
   height: 186px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 0 200px;
+  justify-content: center;
+
 `
 export const ImagemMassa = styled.section`
   width: 100%;
   height: 280px;
   margin-bottom: 56px;
   display: grid;
-  padding-left: 340px;
   background-repeat: no-repeat;
   background-size: cover;
 `
@@ -41,8 +54,9 @@ export const Titulo = styled.h1`
   font-size: 32px;
   font-weight: bold;
   color: ${cores.branca};
-  margin-bottom: 34px;
-  align-self: end;
+
+
+
 
 `
 export const Tipo = styled.p`
@@ -51,7 +65,7 @@ export const Tipo = styled.p`
   font-weight: 100;
   color: ${cores.branca};
   margin-top: 25px;
-
+  margin-bottom: 100px;
 `
 
 
