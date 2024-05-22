@@ -6,14 +6,14 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1024px;
+  max-width: 1040px;
 `
 export const ContainerMassa = styled.div`
-  width: 100%;
-  display: grid;
-  align-items: self-start;
-  justify-content: space-around;
-  max-width: 1010px;
+width: 100%;
+display: block;
+align-items: self-start;
+justify-self: center;
+max-width: 1040px;
 
 `
 
@@ -32,6 +32,7 @@ export const ImagemMassa = styled.section`
   display: grid;
   background-repeat: no-repeat;
   background-size: cover;
+
 `
 
 export const Restaurante = styled.h2`
@@ -55,9 +56,6 @@ export const Titulo = styled.h1`
   font-weight: bold;
   color: ${cores.branca};
 
-
-
-
 `
 export const Tipo = styled.p`
 
@@ -65,7 +63,7 @@ export const Tipo = styled.p`
   font-weight: 100;
   color: ${cores.branca};
   margin-top: 25px;
-  margin-bottom: 100px;
+  margin-bottom: 150px
 `
 
 
