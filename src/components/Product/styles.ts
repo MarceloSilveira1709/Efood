@@ -11,6 +11,7 @@ export const Card = styled.div`
 
   ${TagContainer} {
     margin: 8px;
+    cursor:pointer;
   }
 
 `

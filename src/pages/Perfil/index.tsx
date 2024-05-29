@@ -4,6 +4,13 @@ import Food from "../../models/Food";
 import pizza from '../../assets/images/pizza.png'
 import ProductsPerfilList from "../../components/ProductPerfilList";
 import HeaderPerfil from "../../components/HeaderPerfil";
+import Footer from "../../components/Footer";
+import Effects from "../../components/Effects";
+import { Modal } from "../../components/Effects/styles";
+
+
+
+
 
 const perfil: Food [] = [{
   id:1,
@@ -56,6 +63,9 @@ const Perfil = () => (
   <>
   <HeaderPerfil/>
   <ProductsPerfilList  foods={perfil} title="Perfil"/>
+  <Modal />
+  <Footer />
+  <Effects/>
   </>
 )
 

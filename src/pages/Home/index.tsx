@@ -4,6 +4,7 @@ import Food from "../../models/Food";
 import hioki from '../../assets/images/sushi.png'
 import massa from '../../assets/images/massa.png'
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 
 
@@ -56,6 +57,7 @@ const Home = () => (
   <>
   <Header/>
   <ProductsList  foods={home} title="Hioki"/>
+  <Footer />
   </>
 )
 
