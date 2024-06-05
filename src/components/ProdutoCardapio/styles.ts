@@ -11,6 +11,8 @@ export const Card = styled.div`
 
 img{
   padding:8px;
+  width: 320px;
+  height: 167px;
 }
 
 `

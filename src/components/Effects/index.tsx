@@ -1,20 +1,23 @@
-import {Botao, Imagem, Modal, Sabor, Texto,} from "./styles"
+import {Botao, Fechar, Imagem, Modal, Sabor, Texto,} from "./styles"
 import fechar from '../../assets/images/fechar.png'
 
 import ImgFood from '../../assets/images/pizza.png'
-import { useState } from "react"
 
 
+type prop = {
+  modalEstaAberto: boolean
+  setModalEstaAberto: (value: boolean) => void
+}
 
-const Effects = () => {
-
-  const [modalEstaAberto, setModalEstaAberto] = useState(false)
+const Effects = ({modalEstaAberto, setModalEstaAberto}: prop) => {
 
   return (
     <Modal className={modalEstaAberto ? 'visivel' : ''}>
 <Imagem style={{backgroundImage: `url(${ImgFood})`}}></Imagem>
 <div>
-  <img src={fechar} alt="Icone de fechar" onClick={() => setModalEstaAberto(true) }/>
+  <Fechar>
+  <img src={fechar} alt="Icone de fechar" onClick={() => setModalEstaAberto(false) }/>
+  </Fechar>
   <Sabor>Pizza Margarita</Sabor>
 <Texto>A pizza Margherita é uma pizza clássica da culinária italiana, reconhecida por sua simplicidade e sabor inigualável.
   Ela é feita com uma base de massa fina e crocante, coberta com molho de tomate fresco, queijo mussarela de alta qualidade,
@@ -28,11 +31,5 @@ const Effects = () => {
 </Modal>
   )
 }
-
-
-
-
-
-
 
 export default Effects

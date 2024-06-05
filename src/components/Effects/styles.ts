@@ -4,25 +4,38 @@ import { cores } from "../../styles";
 export const Modal = styled.div`
   margin-top: 250px;
   position: fixed;
-  justify-self:center;
+  justify-self: center;
   background-color: ${cores.rosa};
   display: flex;
   height: 332px;
   max-width: 1036px;
   width: 100%;
-  z-index: 1;
+
+
+
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: -1;
+  }
 
   &.visivel {
     display: flex;
+    justify-content: flex-end;
   }
-
-  img{
-    display: ;
-    justify-content: end;
-    cursor: pointer;
-  {
-
 `
+export const Fechar = styled.header`
+  cursor: pointer;
+  padding-top: 8px;
+  padding-left: 630px;
+`
+
+;
 export const Botao = styled.button`
   width: 218px;
   background-color: ${cores.bege};
@@ -33,25 +46,27 @@ export const Botao = styled.button`
   border: none;
   margin-top: 16px;
   cursor: pointer;
-`
+`;
 
 export const Imagem = styled.div`
-margin: 24px;
-width: 100%;
-display: block;
-max-width:280px;
-height: 280px;
-background-repeat: no-repeat;
-background-size: cover;
-`
+  margin: 24px;
+  width: 100%;
+  display: block;
+  max-width: 280px;
+  height: 280px;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
 export const Sabor = styled.h2`
-margin-top: 32px;
-font-size: 18px;
-font-weight: bold
-`
+  font-size: 18px;
+  font-weight: bold;
+`;
 
 export const Texto = styled.p`
-max-width:656px;
-margin-top: 16px;
-font-size: 14px;
-`
+  max-width: 656px;
+  margin-top: 16px;
+  font-size: 14px;
+`;
+
+
