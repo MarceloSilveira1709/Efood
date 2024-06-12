@@ -8,11 +8,12 @@ export const Card = styled.div`
   border: solid 1px ${cores.rosa};
   margin-bottom: 48px;
   max-width: 474px;
+  border-top: none;
 `
 export const ImgFood = styled.img`
   display: block;
   width: 100%;
-  height: 250px;
+  height: 251px;
   object-fit: cover;
 `
 export const Titulo = styled.h2`
@@ -30,6 +31,7 @@ export const Descricao = styled.p`
   display: block;
   color: ${cores.rosa};
 
+
 `
 
 export const Infos = styled.div`
@@ -41,7 +43,7 @@ export const Infos = styled.div`
 `
 export const Tag = styled.div`
   background-color: ${cores.rosa};
-  color: ${cores.begeClaro};
+  color: ${cores.bege};
   max-width: 100%;
   height: 26px;
   text-align: center;
@@ -50,7 +52,6 @@ export const Tag = styled.div`
   font-weight: bold;
   display: inline-block;
   margin: 8px;
-  cursor: pointer;
 `
 export const Nota = styled.span`
   color: ${cores.rosa};
@@ -71,6 +72,20 @@ export const Detalhes = styled.div`
 `
 export const Avaliacao = styled.div`
   display: flex;
+`
+export const Botao = styled.button`
+background-color: ${cores.rosa};
+  color: ${cores.bege};
+  max-width: 100%;
+  height: 26px;
+  text-align: center;
+  padding: 4px 6px;
+  font-size: 12px;
+  font-weight: bold;
+  display: inline-block;
+  margin: 8px;
+  border:none;
+  cursor: pointer;
 `
 
 

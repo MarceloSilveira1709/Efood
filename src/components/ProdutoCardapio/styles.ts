@@ -8,6 +8,7 @@ export const Card = styled.div`
   position: relative;
   margin-bottom: 48px;
   max-width: 320px;
+  max-height: 338px;
 
 img{
   padding:8px;
@@ -21,9 +22,6 @@ export const Titulo = styled.h2`
   font-size: 18px;
   color: ${cores.bege};
   padding-left: 8px;
-  margin-top: 8px;
-  margin-bottom: 16px;
-
 `
 
 export const Descricao = styled.p`

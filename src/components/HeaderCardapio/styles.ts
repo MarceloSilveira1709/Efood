@@ -35,10 +35,11 @@ export const ImagemMassa = styled.section`
 
 `
 
-export const Restaurante = styled.h2`
+export const Restaurante = styled.a`
   font-size: 18px;
   font-weight: bold;
   color: ${cores.rosa};
+  text-decoration: none;
   `
 
 export const Logo = styled.img`
@@ -65,5 +66,6 @@ export const Tipo = styled.p`
   margin-top: 25px;
   margin-bottom: 150px
 `
+
 
 

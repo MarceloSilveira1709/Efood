@@ -22,13 +22,15 @@ const ProdutosListaRestaurante = ({ foods }: Props) =>  {
         <Produto
           key={food.id}
           description={food.descricao}
-          image={food.capa}
+          image={food.image}
           infos={getFoodTags(food)}
           name={food.titulo}
           id={food.id}
           destacado={food.destacado}
           tipo={food.tipo}
-          nota={food.avaliacao}/>
+          nota={food.avaliacao}
+          capa={food.capa}/>
+
       ))}
     </List>
   </Container>

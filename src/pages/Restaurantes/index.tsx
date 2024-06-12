@@ -11,6 +11,7 @@ export type Restaurante = {
   avaliacao: number;
   descricao: string;
   capa: string;
+  image: string
 }
 
 const Restaurantes = () => {

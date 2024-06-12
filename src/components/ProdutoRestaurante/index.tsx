@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import estrela from '../../assets/images/estrela.svg'
-import  { Card, Descricao, Titulo, Infos, Tag, Nota, Estrela, ImgFood, Detalhes, Avaliacao } from './styles'
+import  { Card, Descricao, Titulo, Infos, Tag, Nota, Estrela, ImgFood, Detalhes, Avaliacao, Botao, } from './styles'
 
 type Props = {
   id: number;
@@ -11,9 +11,10 @@ type Props = {
   destacado: boolean;
   tipo: string;
   nota: number;
+  capa: string;
 }
 
-const ProdutoRestaurante= ( {id, image, name, description, destacado,  tipo , nota ,
+const ProdutoRestaurante= ( {id, image, name, description, destacado,  tipo , nota , capa
 }: Props) => {
   const getDescricao = (descricao: string) => {
     if (descricao.length > 95) {
@@ -24,12 +25,11 @@ const ProdutoRestaurante= ( {id, image, name, description, destacado,  tipo , no
 
 return (
   <Card>
-    <ImgFood src={image} alt={name} />
+    <ImgFood src={capa} alt={name} />
     <Infos>
-    <Tag>{destacado}</Tag>
+    {destacado ? <Tag>Destaque da semana</Tag> : ''}
     <Tag>{tipo}</Tag>
     </Infos>
-
     <Detalhes>
     <Titulo>{name}</Titulo>
     <Avaliacao>
@@ -41,9 +41,10 @@ return (
     <Descricao>
       {getDescricao(description)}
     </Descricao>
-    <Tag>
-      <Link to="/cardapios">Saiba mais</Link>
-    </Tag>
+    <Link to={`/cardapios/${id}`}>
+      <Botao>Saiba mais</Botao>
+    </Link>
+
   </Card>
 )
 }
