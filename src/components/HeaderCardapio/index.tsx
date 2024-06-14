@@ -14,12 +14,12 @@ const HeaderCardapio = () => (
       <Restaurante >
       <Link to="/">Restaurantes</Link>
       </Restaurante>
-
-
     <Logo src={logo} alt="Efood"/>
     <Carrinho>0 produtos(s) no carrinho</Carrinho>
     </Container>
   </ImagemFundo>
+
+
 
   <ImagemMassa style={{backgroundImage: `url(${headerImgMassa})` }}>
     <ContainerMassa>
