@@ -8,6 +8,7 @@ import ModalProduto from "../ModalProduto";
 
 export type Props = {
   foods: Cardapio[];
+  title: string
 };
 
 const ProdutosListaCardapio = ({ foods }: Props) => {

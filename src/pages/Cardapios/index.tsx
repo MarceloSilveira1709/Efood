@@ -33,7 +33,7 @@ const Cardapios = () => {
   return (
     <>
       <HeaderCardapio />
-        <ProdutoListaCardapio foods={cardapio} />
+        <ProdutoListaCardapio foods={cardapio} title={""} />
       <Footer />
     </>
   );

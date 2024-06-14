@@ -3,7 +3,8 @@ import { Botao } from "../ProdutoCardapio/styles"
 import { CartContainer, InfoProduto, Overlay, Prato, Preco, Produto, Sidebar, Total } from "./styles"
 import pizza from '../../assets/images/pizza.png'
 
-const Cart = () => (
+const Cart = () => {
+  return (
   <CartContainer>
     <Overlay />
       <Sidebar>
@@ -33,5 +34,6 @@ const Cart = () => (
     </CartContainer>
 
 )
+}
 
 export default Cart
