@@ -46,8 +46,7 @@ export const Logo = styled.img`
   justify-content: center;
 
 `
-export const Carrinho = styled.p`
-
+export const Carrinho = styled.a`
   font-size: 18px;
   font-weight: bold;
   color: ${cores.rosa};
