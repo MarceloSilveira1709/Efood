@@ -16,6 +16,7 @@ img{
   height: 167px;
 }
 
+
 `
 export const Titulo = styled.h2`
   font-weight: bold;

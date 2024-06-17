@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import estrela from '../../assets/images/estrela.svg'
-import  { Card, Descricao, Titulo, Infos, Tag, Nota, Estrela, ImgFood, Detalhes, Avaliacao, Botao, } from './styles'
+import  { Card, Descricao, Titulo, Infos, Tag, Nota, Estrela, ImgFood, Detalhes, Botao, Avaliacao, } from './styles'
 
 type Props = {
   id: number;
@@ -31,13 +31,13 @@ return (
     <Tag>{tipo}</Tag>
     </Infos>
     <Detalhes>
-    <Avaliacao>
+      <div>
     <Titulo>{name}</Titulo>
-    <div>
+    <Avaliacao>
       <Nota>{nota}</Nota>
       <Estrela src={estrela}></Estrela>
-    </div>
     </Avaliacao>
+    </div>
     <Descricao>
       {getDescricao(description)}
     </Descricao>

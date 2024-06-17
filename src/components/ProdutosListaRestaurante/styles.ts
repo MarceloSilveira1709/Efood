@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { breakpoints } from "../../styles";
 
 export const Container = styled.section`
 justify-content: center;
@@ -13,6 +14,15 @@ export const List = styled.ul`
   max-width: 1024px;
   width: 100%;
 
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+    max-width: 380px;
+    justify-content: center;
+  }
 `
 
 

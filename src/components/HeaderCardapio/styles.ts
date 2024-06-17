@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { cores } from '../../styles';
+import { breakpoints, cores } from '../../styles';
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
@@ -8,6 +8,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   max-width: 1040px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 80%;
+  }
 `
 export const ContainerMassa = styled.div`
 width: 100%;
@@ -16,6 +20,9 @@ align-items: self-start;
 justify-self: center;
 max-width: 1040px;
 
+@media (max-width: ${breakpoints.desktop}) {
+  max-width: 80%;
+}
 `
 
 
@@ -46,11 +53,21 @@ export const RestauranteLink = styled(Link)`
 export const Logo = styled.img`
   justify-content: center;
 
+  @media (max-width: ${breakpoints.desktop}) {
+    padding: 10px;
+  }
+
 `
 export const Carrinho = styled.a`
   font-size: 18px;
   font-weight: bold;
   color: ${cores.rosa};
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 15px;
+  }
+
+
 `
 export const Titulo = styled.h1`
   font-size: 32px;

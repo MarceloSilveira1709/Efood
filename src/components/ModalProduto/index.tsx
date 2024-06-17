@@ -1,4 +1,4 @@
-import { Botao, Fechar, Imagem, Modal, Overlay, Sabor, Texto } from "./styles";
+import { Botao, ContainerModal, Fechar, Imagem, Modal, Overlay, Sabor, Texto } from "./styles";
 import fechar from "../../assets/images/fechar.png";
 import { Cardapio } from "../../pages/Cardapios";
 import { useDispatch } from "react-redux";
@@ -20,8 +20,8 @@ const ModalProduto = ({ modalEstaAberto, setModalEstaAberto, cardapio }: Props) 
 
   return (
     <Overlay>
+      <ContainerModal>
     <Modal className={modalEstaAberto ? "visivel" : ""}>
-      <>
         <Imagem style={{ backgroundImage: `url(${cardapio.foto})` }} />
         <div>
           <Fechar>
@@ -41,8 +41,8 @@ const ModalProduto = ({ modalEstaAberto, setModalEstaAberto, cardapio }: Props) 
             Adicionar ao carrinho - {cardapio.preco}
           </Botao>
         </div>
-      </>
     </Modal>
+    </ContainerModal>
     </Overlay>
   );
 };

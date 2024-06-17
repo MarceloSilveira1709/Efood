@@ -5,7 +5,11 @@ export const cores = {
   bege: '#FFEBD9',
   branca: '#FFFFFF',
   begeClaro:'#FFF8F2',
+}
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px'
 }
 
 export const GlobalCss = createGlobalStyle`
@@ -25,8 +29,11 @@ export const GlobalCss = createGlobalStyle`
   .container{
     width: 100%;
     margin: 0 auto;
-    display:grid;
+    display: grid;
 
+    @media (max-width: ${breakpoints.desktop}) {
+
+    }
   }
 `
 

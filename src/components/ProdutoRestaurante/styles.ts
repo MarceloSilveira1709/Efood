@@ -20,7 +20,7 @@ font-weight: bold;
 font-size: 18px;
 color: ${cores.rosa};
 padding-left: 8px;
-margin-top: 8px;
+padding-top: 8px;
 display:flex;
 `
 
@@ -57,30 +57,25 @@ export const Nota = styled.span`
   color: ${cores.rosa};
   font-size: 20px;
   font-Weight: bold;
-  padding-bottom: 8px;
-
 `
 
 export const Estrela = styled.img`
   width: 20px;
   height: 20px;
   margin: 8px;
-
 `
 export const Detalhes = styled.div`
   display: block;
   border: solid 1px ${cores.rosa};
   border-top: none;
+  div{
+    display:flex;
+    justify-content: space-between;
+  }
 `
 export const Avaliacao = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-
-
-  div{
-    align-self: center ;
-
   }
 `
 export const Botao = styled.button`

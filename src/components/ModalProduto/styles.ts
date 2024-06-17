@@ -1,15 +1,27 @@
 import styled from "styled-components";
 import { cores } from "../../styles";
 
+
+export const ContainerModal = styled.div `
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  ;
+`
 export const Modal = styled.div`
-  margin-top: 250px;
-  margin-left: 150px;
+
   position: fixed;
   background-color: ${cores.rosa};
   display: flex;
   height: 332px;
   max-width: 1036px;
   width: 100%;
+
 
   &.visivel {
     display: flex;
@@ -20,7 +32,6 @@ content: '';
 position: fixed;
 top: 0;
 left: 0;
-justify-content: center;
 width: 100%;
 height: 100%;
 background-color: rgba(0, 0, 0, 0.8);
@@ -29,9 +40,10 @@ z-index: 1;
 `
 
 export const Fechar = styled.header`
+  display: flex;
   cursor: pointer;
-  padding-top: 8px;
-  padding-left: 630px;
+  padding: 8px 8px;
+  justify-content: flex-end;
 `
 
 ;
@@ -64,7 +76,6 @@ export const Sabor = styled.h2`
 `;
 
 export const Texto = styled.p`
-  max-width: 656px;
   margin-top: 16px;
   font-size: 14px;
 `;

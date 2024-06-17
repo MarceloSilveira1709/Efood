@@ -16,6 +16,8 @@ export const Container = styled.footer`
     padding-top: 80px;
     max-width: 480px;
   }
+
+
 `
 
 export const Logo = styled.img`
