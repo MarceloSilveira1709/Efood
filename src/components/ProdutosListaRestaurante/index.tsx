@@ -4,11 +4,10 @@ import Produto from "../ProdutoRestaurante";
 import { Container, List } from "./styles";
 
 export type Props = {
-  title: string;
   foods?: Restaurante[]; // Permitindo que foods seja opcional
 };
 
-const ProdutosListaRestaurante = ({ foods, title }: Props) => {
+const ProdutosListaRestaurante = ({ foods, }: Props) => {
   if (!foods) {
     return <p>Carregando...</p>; // Exemplo de mensagem de carregamento para quando foods for undefined
   }
@@ -20,7 +19,6 @@ const ProdutosListaRestaurante = ({ foods, title }: Props) => {
 
   return (
     <Container>
-      <h2>{title}</h2>
       <List>
         {foods.map((food) => (
           <Produto

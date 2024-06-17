@@ -1,6 +1,5 @@
-import { Botao } from "../ProdutoCardapio/styles"
 
-import { CartContainer, InfoProduto, Overlay, Prato, Preco, Produto, Sidebar, Total } from "./styles"
+import { Botao, CartContainer, InfoProduto, Overlay, Prato, Preco, Produto, Sidebar, Total } from "./styles"
 import pizza from '../../assets/images/pizza.png'
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
@@ -29,21 +28,23 @@ const dispatch = useDispatch ()
   <CartContainer className={isOpen ? 'is-open' : ''}>
     <Overlay  onClick={closeCart}/>
       <Sidebar>
-        <ul>
+
           {items.map((item) => (
         <Produto key={item.id}>
           <img src={item.foto}  alt={item.nome}/>
           <InfoProduto>
             <Prato>{item.nome}</Prato>
-            <Preco>{item.preco}</Preco>
+            <Preco>R$ {item.preco}</Preco>
             <button onClick={() => removeItem(item.id)} type="button"/>
           </InfoProduto>
         </Produto>
           ))}
-            <Total>Valor total R$ {getTotalPrice()}</Total>
-            <Botao > Continuar para a entrega</Botao>
+            <Total>
+              <p>Valor total </p>
+              R$ {getTotalPrice()}</Total>
+            <Botao> Continuar para a entrega </Botao>
 
-        </ul>
+
       </Sidebar>
     </CartContainer>
 

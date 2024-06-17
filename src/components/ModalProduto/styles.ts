@@ -3,30 +3,31 @@ import { cores } from "../../styles";
 
 export const Modal = styled.div`
   margin-top: 250px;
+  margin-left: 150px;
   position: fixed;
-  justify-self: center;
   background-color: ${cores.rosa};
   display: flex;
   height: 332px;
   max-width: 1036px;
   width: 100%;
 
-  &::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    z-index: -1;
-  }
-
   &.visivel {
     display: flex;
-    justify-content: flex-end;
   }
 `
+export const Overlay = styled.div `
+content: '';
+position: fixed;
+top: 0;
+left: 0;
+justify-content: center;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.8);
+z-index: 1;
+}
+`
+
 export const Fechar = styled.header`
   cursor: pointer;
   padding-top: 8px;

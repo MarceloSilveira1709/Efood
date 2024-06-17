@@ -31,19 +31,20 @@ return (
     <Tag>{tipo}</Tag>
     </Infos>
     <Detalhes>
-    <Titulo>{name}</Titulo>
     <Avaliacao>
+    <Titulo>{name}</Titulo>
+    <div>
       <Nota>{nota}</Nota>
       <Estrela src={estrela}></Estrela>
+    </div>
     </Avaliacao>
-    </Detalhes>
-
     <Descricao>
       {getDescricao(description)}
     </Descricao>
     <Link to={`/cardapios/${id}`}>
       <Botao>Saiba mais</Botao>
     </Link>
+    </Detalhes>
 
   </Card>
 )

@@ -20,7 +20,5 @@ export const { useGetRestaurantesQuery, useGetCardapioQuery } = api;
 
 export default api;
 
-// Adiciona um export vazio para transformar o arquivo em um módulo
-export {};
 
 

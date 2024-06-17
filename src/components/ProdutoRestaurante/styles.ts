@@ -5,10 +5,9 @@ import { cores } from "../../styles";
 export const Card = styled.div`
   background-color: ${cores.branca};
   position: relative;
-  border: solid 1px ${cores.rosa};
   margin-bottom: 48px;
   max-width: 474px;
-  border-top: none;
+
 `
 export const ImgFood = styled.img`
   display: block;
@@ -22,6 +21,7 @@ font-size: 18px;
 color: ${cores.rosa};
 padding-left: 8px;
 margin-top: 8px;
+display:flex;
 `
 
 export const Descricao = styled.p`
@@ -57,7 +57,7 @@ export const Nota = styled.span`
   color: ${cores.rosa};
   font-size: 20px;
   font-Weight: bold;
-  margin-top: 8px;
+  padding-bottom: 8px;
 
 `
 
@@ -65,13 +65,23 @@ export const Estrela = styled.img`
   width: 20px;
   height: 20px;
   margin: 8px;
+
 `
 export const Detalhes = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: block;
+  border: solid 1px ${cores.rosa};
+  border-top: none;
 `
 export const Avaliacao = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+  div{
+    align-self: center ;
+
+  }
 `
 export const Botao = styled.button`
 background-color: ${cores.rosa};

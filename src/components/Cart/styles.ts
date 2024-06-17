@@ -31,7 +31,7 @@ export const CartContainer = styled.div`
 export const Produto = styled.div`
   background-color: ${cores.bege};
   max-width: 344px;
-  min-height: 100px;
+  max-height: 100px;
   display: flex;
   margin-bottom: 16px;
   position: relative;
@@ -44,7 +44,7 @@ export const Produto = styled.div`
   }
 `;
 
-export const InfoProduto = styled.div`
+export const InfoProduto = styled.li`
   button {
     background-image: url(${lixeira});
     width: 16px;
@@ -52,8 +52,8 @@ export const InfoProduto = styled.div`
     border: none;
     background-color: transparent;
     position: absolute;
-    bottom: 8px;
     right: 8px;
+    bottom: 8px;
     cursor: pointer;
   }
 `;
@@ -78,12 +78,27 @@ export const Preco = styled.p`
   color: ${cores.rosa};
 `;
 
-export const Total = styled.p`
+export const Total = styled.div`
+  display: flex;
   font-weight: bold;
   font-size: 14px;
   color: ${cores.bege};
-  padding: 40px 8px 8px 16px;
+  padding-top: 40px;
+  padding-bottom: 16px;
+  justify-content: space-between;
 `;
+
+
+export const Botao = styled.button`
+width: 300px;
+  background-color: ${cores.bege};
+  color: ${cores.rosa};
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 6px;
+  border: none;
+  cursor: pointer;
+`
 
 
 

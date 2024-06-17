@@ -1,7 +1,7 @@
 
 import  headerImg from '../../assets/images/fundo.png'
 import headerImgMassa from '../../assets/images/fundo_massa.png'
-import {Carrinho, Container, ContainerMassa, ImagemFundo, ImagemMassa, Logo,Restaurante,Tipo, Titulo } from './styles'
+import {Carrinho, Container, ContainerMassa, ImagemFundo, ImagemMassa, Logo, RestauranteLink, Tipo, Titulo } from './styles'
 import logo from '../../assets/images/logo.svg'
 import { Link } from 'react-router-dom'
 import { open } from '../../store/reducers/cart'
@@ -20,10 +20,7 @@ const HeaderCardapio = () => {
     <>
     <ImagemFundo style={{backgroundImage: `url(${headerImg})` }}>
       <Container>
-
-        <Restaurante >
-        <Link to="/">Restaurantes</Link>
-        </Restaurante>
+      <RestauranteLink to="/">Restaurantes</RestauranteLink>
       <Logo src={logo} alt="Efood"/>
       <Carrinho onClick={openCart}>{items.length} - produtos(s) no carrinho</Carrinho>
       </Container>

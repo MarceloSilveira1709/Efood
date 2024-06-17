@@ -23,7 +23,7 @@ const Restaurantes = () => {
   return (
     <>
   <Header/>
-  <ProdutosLista  foods={restaurante} title="Restaurantes"/>
+  <ProdutosLista  foods={restaurante}  />
   <Footer />
   </>
   )

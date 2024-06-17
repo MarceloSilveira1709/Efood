@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { cores } from '../../styles';
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
@@ -34,13 +35,12 @@ export const ImagemMassa = styled.section`
   background-size: cover;
 
 `
-
-export const Restaurante = styled.a`
+export const RestauranteLink = styled(Link)`
   font-size: 18px;
   font-weight: bold;
   color: ${cores.rosa};
   text-decoration: none;
-  `
+`;
 
 export const Logo = styled.img`
   justify-content: center;
