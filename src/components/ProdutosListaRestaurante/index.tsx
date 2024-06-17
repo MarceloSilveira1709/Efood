@@ -1,19 +1,20 @@
 
-import { Restaurante } from "../../pages/Restaurantes";
-import Produto from "../ProdutoRestaurante";
-import { Container, List } from "./styles";
+import React from 'react';
+import { Restaurante } from '../../pages/Restaurantes';
+import Produto from '../ProdutoRestaurante';
+import { Container, List } from './styles';
 
 export type Props = {
   foods?: Restaurante[]; // Permitindo que foods seja opcional
 };
 
-const ProdutosListaRestaurante = ({ foods, }: Props) => {
+const ProdutosListaRestaurante: React.FC<Props> = ({ foods }) => {
   if (!foods) {
     return <p>Carregando...</p>; // Exemplo de mensagem de carregamento para quando foods for undefined
   }
 
   const getFoodTags = (food: Restaurante) => {
-    const tags = [''];
+    const tags = ['']; // Lógica para obter as tags de comida
     return tags;
   };
 

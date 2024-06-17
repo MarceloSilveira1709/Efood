@@ -14,32 +14,58 @@ export type Cardapio = {
   porcao: string;
 }
 
-const Cardapios = () => {
-  const { id } = useParams(); // Certifique-se de que está importando de 'react-router-dom'
-  const [cardapio, setCardapio] = useState<Cardapio[]>([]);
+export type Restaurante = {
+  id: number;
+  titulo: string;
+  tipo: string;
+  capa: string;
+  descricao: string;
+  avaliacao: number;
+  destacado: boolean;
+  image: string;
+}
 
+const Cardapios = () => {
+  const { id } = useParams<{ id: string }>();
+  const [cardapio, setCardapio] = useState<Cardapio[]>([]);
+  const [restaurante, setRestaurante] = useState<Restaurante | null>(null);
 
   useEffect(() => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then(res => {
-        return res.json();
-      })
+      .then(res => res.json())
       .then(data => {
         console.log("Dados recebidos da API:", data);
+        const mapaRestaurante: Restaurante = {
+          id: data.id,
+          titulo: data.titulo,
+          tipo: data.tipo,
+          capa: data.capa,
+          descricao: data.descricao,
+          avaliacao: data.avaliacao,
+          destacado: data.destacado,
+          image: data.image
+        };
         setCardapio(data.cardapio || []);
-      })
+        setRestaurante(mapaRestaurante);
+      });
   }, [id]);
+
+  if (!restaurante) {
+    return <p>Carregando...</p>;
+  }
 
   return (
     <>
-      <HeaderCardapio />
-        <ProdutoListaCardapio foods={cardapio} title={""} />
+      <HeaderCardapio restaurante={restaurante} />
+      <ProdutoListaCardapio foods={cardapio} title="Cardápio" />
       <Footer />
     </>
   );
 }
 
 export default Cardapios;
+
+
 
 
 

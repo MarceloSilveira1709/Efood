@@ -35,6 +35,7 @@ export const ImagemMassa = styled.section`
   background-size: cover;
 
 `
+
 export const RestauranteLink = styled(Link)`
   font-size: 18px;
   font-weight: bold;
