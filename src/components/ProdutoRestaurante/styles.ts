@@ -30,8 +30,6 @@ export const Descricao = styled.p`
   margin: 8px;
   display: block;
   color: ${cores.rosa};
-
-
 `
 
 export const Infos = styled.div`

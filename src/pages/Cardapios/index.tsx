@@ -1,9 +1,10 @@
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"; // Use 'react-router-dom'
+import { useParams } from "react-router-dom";
 import Footer from "../../components/Footer";
 import HeaderCardapio from "../../components/HeaderCardapio";
 import ProdutoListaCardapio from "../../components/ProdutoListaCardapio";
+import Card from "../../components/Card";
 
 export type Cardapio = {
   foto: string;
@@ -57,6 +58,7 @@ const Cardapios = () => {
   return (
     <>
       <HeaderCardapio restaurante={restaurante} />
+      <Card />
       <ProdutoListaCardapio foods={cardapio} title="Cardápio" />
       <Footer />
     </>

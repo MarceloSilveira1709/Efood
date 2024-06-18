@@ -43,8 +43,6 @@ const dispatch = useDispatch ()
               <p>Valor total </p>
               R$ {getTotalPrice()}</Total>
             <Botao> Continuar para a entrega </Botao>
-
-
       </Sidebar>
     </CartContainer>
 
