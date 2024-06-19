@@ -57,7 +57,7 @@ export const Botao = styled.button`
   border: none;
   margin-top: 16px;
   cursor: pointer;
-  width: 100%;
+
 `;
 
 export const Imagem = styled.div`
