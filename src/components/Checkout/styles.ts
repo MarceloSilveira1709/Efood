@@ -29,7 +29,7 @@ export const Sidebar = styled.aside`
   position: fixed;
   right: 0;
   top: 0;
-  z-index: 2;
+  z-index: 1;
 
   h2 {
     font-size: 16px;
@@ -45,7 +45,7 @@ export const Overlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.8);
   opacity: 0.7;
 `;
 
