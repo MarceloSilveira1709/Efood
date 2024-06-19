@@ -90,7 +90,7 @@ export const Total = styled.div`
 
 
 export const Botao = styled.button`
-width: 300px;
+  width: 300px;
   background-color: ${cores.bege};
   color: ${cores.rosa};
   font-size: 14px;

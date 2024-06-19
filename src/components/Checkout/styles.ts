@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import { cores } from '../../styles';
 
+type InputGroupProps = {
+  maxWidth?: string;
+};
+
 export const CardContainer = styled.div`
   position: fixed;
   top: 0;
@@ -20,7 +24,7 @@ export const Sidebar = styled.aside`
   display: block;
   background-color: ${cores.rosa};
   padding: 38px 8px 0 8px;
-  width: 300px;
+  width: 360px;
   height: 100%;
   position: fixed;
   right: 0;
@@ -45,10 +49,13 @@ export const Overlay = styled.div`
   opacity: 0.7;
 `;
 
-export const FormItem = styled.li`
+export const InputGroup = styled.div<InputGroupProps>`
+  flex: auto;
   display: flex;
   flex-direction: column;
   margin-top: 8px;
+
+  max-width: ${(props) => props.maxWidth || 'auto'};
 
   label {
     margin-bottom: 8px;
@@ -72,10 +79,6 @@ export const FormRow = styled.div`
   justify-content: space-between;
   gap: 8px;
   margin-top: 8px;
-
-  ${FormItem} {
-    flex: 1;
-    padding-right: 8px;
-  }
 `;
+
 

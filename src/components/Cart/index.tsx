@@ -4,6 +4,7 @@ import pizza from '../../assets/images/pizza.png'
 import { useDispatch, useSelector } from "react-redux"
 import { RootReducer } from "../../store"
 import {close, remove} from '../../store/reducers/cart'
+import Card from "../Card"
 
 const Cart = () => {
 const {isOpen, items} = useSelector((state: RootReducer) => state.cart)
@@ -25,10 +26,10 @@ const dispatch = useDispatch ()
   }
 
   return (
+    <>
   <CartContainer className={isOpen ? 'is-open' : ''}>
     <Overlay  onClick={closeCart}/>
       <Sidebar>
-
           {items.map((item) => (
         <Produto key={item.id}>
           <img src={item.foto}  alt={item.nome}/>
@@ -45,7 +46,8 @@ const dispatch = useDispatch ()
             <Botao> Continuar para a entrega </Botao>
       </Sidebar>
     </CartContainer>
-
+    <Card />
+    </>
 )
 }
 

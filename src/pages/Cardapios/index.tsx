@@ -58,7 +58,6 @@ const Cardapios = () => {
   return (
     <>
       <HeaderCardapio restaurante={restaurante} />
-      <Card />
       <ProdutoListaCardapio foods={cardapio} title="Cardápio" />
       <Footer />
     </>
