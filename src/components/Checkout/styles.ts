@@ -37,6 +37,19 @@ export const Sidebar = styled.aside`
     color: ${cores.bege};
     margin-bottom: 16px;
   }
+
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: ${cores.bege};
+    margin-bottom: 16px;
+  }
+
+  p{
+    font-size: 14px;
+    color: ${cores.bege};
+    margin-bottom: 20px;
+  }
 `;
 
 export const Overlay = styled.div`
