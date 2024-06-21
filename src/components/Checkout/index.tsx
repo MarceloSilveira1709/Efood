@@ -3,6 +3,7 @@ import { CardContainer, Overlay, Sidebar, FormRow, InputGroup } from './styles';
 import { Botao } from '../ModalProduto/styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import { usePurchaseMutation } from '../../services/api';
 
 interface CheckoutProps {
   setDelivery: (value: boolean) => void;
@@ -11,6 +12,8 @@ interface CheckoutProps {
 const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
   const [isPaymentVisible, setIsPaymentVisible] = useState(false);
   const [isDeliveryVisible, setIsDeliveryVisible] = useState(true);
+
+  const [purchase, {isLoading, isError, data}] = usePurchaseMutation()
 
   const formAddressIsValid = () => {
     setIsPaymentVisible(true);
@@ -66,7 +69,34 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
       isPaymentVisible ? schema.required('o campo é obrigatório') : schema),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      purchase({
+        delivery: {
+          receiver: values.receiver,
+          address: values.address,
+          city: values.city,
+          cep: Number(values.cep),
+          number: Number(values.number),
+          complement: values.complement
+        },
+        payment: {
+          card: {
+            name: values.cardDisplayName,
+            number: values.cardNumber,
+            expires: {
+              month: 1,
+              year: 2023
+            },
+            code: Number(values.cardCode)
+          }
+        },
+        products: [
+          {
+            id: 1,
+            price:10
+          }
+        ]
+      });
+
     },
   });
 
