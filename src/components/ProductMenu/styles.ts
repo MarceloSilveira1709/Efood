@@ -18,14 +18,14 @@ img{
 
 
 `
-export const Titulo = styled.h2`
+export const Title = styled.h2`
   font-weight: bold;
   font-size: 18px;
   color: ${cores.bege};
   padding-left: 8px;
 `
 
-export const Descricao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
   margin: 8px;
@@ -41,7 +41,7 @@ export const Infos = styled.div`
   right: 16px;
   backgroud-color: ${cores.rosa};
 `
-export const Botao = styled.button`
+export const Button = styled.button`
   width: 300px;
   background-color: ${cores.bege};
   color: ${cores.rosa};

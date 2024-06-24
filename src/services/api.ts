@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+
 import { Restaurant } from '../pages/Restaurants';
-import { Cardapio } from '../pages/Menus';
+import { Menu } from '../pages/Menus';
 
 type Product = {
   id: number
@@ -38,10 +39,10 @@ const api = createApi({
     baseUrl: 'https://fake-api-tau.vercel.app/api/efood'
   }),
   endpoints: (builder) => ({
-    getRestaurantes: builder.query<Restaurant[], void>({
+    getRestaurants: builder.query<Restaurant[], void>({
       query: () => 'restaurantes'
     }),
-    getCardapio: builder.query<Cardapio[], string>({
+    getMenu: builder.query<Menu[], string>({
       query: (id) => `cardapios/${id}`
     }),
     purchase: builder.mutation<any, PurchasePayload>({
@@ -54,7 +55,7 @@ const api = createApi({
   })
 })
 
-export const { useGetRestaurantesQuery, useGetCardapioQuery, usePurchaseMutation } = api;
+export const { useGetRestaurantsQuery, useGetMenuQuery, usePurchaseMutation } = api;
 
 export default api;
 

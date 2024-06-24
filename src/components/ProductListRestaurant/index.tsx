@@ -1,8 +1,9 @@
-
 import React from 'react';
+
 import Produto from '../ProductRestaurant';
-import { Container, List } from './styles';
 import { Restaurant } from '../../pages/Restaurants';
+
+import { Container, List } from './styles';
 
 export type Props = {
   foods?: Restaurant[]; // Permitindo que foods seja opcional

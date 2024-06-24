@@ -1,21 +1,22 @@
-
 import { useState } from "react";
-import { Lista } from "./styles";
+
+import { Menu } from "../../pages/Menus";
+import ModalProduct from "../ModalProduct";
+import ProductMenu from "../ProductMenu";
+
+import { List } from "./styles";
 import { Container } from "../ProductListRestaurant/styles";
-import { Cardapio } from "../../pages/Menus";
-import ProdutoCardapio from "../ProductMenu";
-import ModalProduto from "../ModalProduct";
 
 export type Props = {
-  foods: Cardapio[];
+  foods: Menu[];
   title: string
 };
 
 const ProductListMenu = ({ foods }: Props) => {
-  const [modalEstaAberto, setModalEstaAberto] = useState(false);
-  const [produtoSelecionado, setProdutoSelecionado] = useState<Cardapio | null>(null);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Menu | null>(null);
 
-  const getFoodTags = (food: Cardapio) => {
+  const getFoodTags = (food: Menu) => {
     const tags = [''];
     return tags;
   };
@@ -23,28 +24,28 @@ const ProductListMenu = ({ foods }: Props) => {
   return (
     <>
       <Container>
-        <Lista>
+        <List>
           {foods.map((food) => (
-            <ProdutoCardapio
+            <ProductMenu
               key={food.id}
               descricao={food.descricao}
               foto={food.foto}
               infos={getFoodTags(food)}
               nome={food.nome}
               porcao={food.porcao}
-              setModalEstaAberto={setModalEstaAberto}
-              setProdutoSelecionado={setProdutoSelecionado} // Definindo o produto selecionado quando o cardápio é clicado
+              setModalIsOpen={setModalIsOpen}
+              setSelectedProduct={setSelectedProduct} // Definindo o produto selecionado quando o cardápio é clicado
               id={food.id}
               preco={food.preco}
             />
           ))}
-        </Lista>
+        </List>
       </Container>
-      {modalEstaAberto && produtoSelecionado && (
-        <ModalProduto
-          modalEstaAberto={modalEstaAberto}
-          setModalEstaAberto={setModalEstaAberto}
-          cardapio={produtoSelecionado} // Passando o cardápio selecionado como propriedade
+      {modalIsOpen && selectedProduct && (
+        <ModalProduct
+        modalIsOpen={modalIsOpen}
+          setModalIsOpen={setModalIsOpen}
+          cardapio={selectedProduct} // Passando o cardápio selecionado como propriedade
         />
       )}
     </>

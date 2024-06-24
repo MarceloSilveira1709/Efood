@@ -1,6 +1,8 @@
 import React from "react";
-import { Card, Descricao, Titulo, Botao } from "./styles";
-import { Cardapio } from "../../pages/Menus";
+
+import { Menu } from "../../pages/Menus";
+
+import * as S from "./styles";
 
 type Props = {
   id: number;
@@ -10,8 +12,8 @@ type Props = {
   porcao: string;
   preco: number;
   infos: string[];
-  setModalEstaAberto: (value: boolean) => void;
-  setProdutoSelecionado: React.Dispatch<React.SetStateAction<Cardapio | null>>;
+  setModalIsOpen: (value: boolean) => void;
+  setSelectedProduct: React.Dispatch<React.SetStateAction<Menu | null>>;
 };
 
 const ProductMenu: React.FC<Props> = ({
@@ -22,11 +24,11 @@ const ProductMenu: React.FC<Props> = ({
   porcao,
   preco,
   infos,
-  setModalEstaAberto,
-  setProdutoSelecionado,
+  setModalIsOpen,
+  setSelectedProduct,
 }) => {
   const handleProdutoClick = () => {
-    setProdutoSelecionado({
+    setSelectedProduct({
       id,
       foto,
       nome,
@@ -34,7 +36,7 @@ const ProductMenu: React.FC<Props> = ({
       porcao,
       preco,
     });
-    setModalEstaAberto(true);
+    setModalIsOpen(true);
   };
 
   const getDescricao = (descricao: string) => {
@@ -45,12 +47,12 @@ const ProductMenu: React.FC<Props> = ({
   };
 
   return (
-    <Card onClick={handleProdutoClick}>
+    <S.Card onClick={handleProdutoClick}>
       <img src={foto} alt={nome} />
-      <Titulo>{nome}</Titulo>
-      <Descricao>{getDescricao(descricao)}</Descricao>
-      <Botao>Ver detalhes</Botao>
-    </Card>
+      <S.Title>{nome}</S.Title>
+      <S.Description>{getDescricao(descricao)}</S.Description>
+      <S.Button>Ver detalhes</S.Button>
+    </S.Card>
   );
 };
 

@@ -28,7 +28,7 @@ export const CartContainer = styled.div`
   }
 `;
 
-export const Produto = styled.div`
+export const Product = styled.div`
   background-color: ${cores.bege};
   max-width: 344px;
   max-height: 100px;
@@ -44,7 +44,7 @@ export const Produto = styled.div`
   }
 `;
 
-export const InfoProduto = styled.li`
+export const InfoProduct = styled.li`
   button {
     background-image: url(${lixeira});
     width: 16px;
@@ -65,7 +65,7 @@ export const Sidebar = styled.aside`
   padding: 38px 8px 0 8px;
 `;
 
-export const Prato = styled.h2`
+export const Dish = styled.h2`
   font-weight: bold;
   font-size: 18px;
   color: ${cores.rosa};
@@ -73,12 +73,12 @@ export const Prato = styled.h2`
   padding-bottom: 16px;
 `;
 
-export const Preco = styled.p`
+export const Price = styled.p`
   font-size: 14px;
   color: ${cores.rosa};
 `;
 
-export const Total = styled.div`
+export const Totals = styled.div`
   display: flex;
   font-weight: bold;
   font-size: 14px;
@@ -89,7 +89,7 @@ export const Total = styled.div`
 `;
 
 
-export const Botao = styled.button`
+export const Button = styled.button`
   width: 300px;
   background-color: ${cores.bege};
   color: ${cores.rosa};

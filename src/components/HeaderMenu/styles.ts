@@ -13,10 +13,9 @@ export const Container = styled.div`
     max-width: 80%;
   }
 `
-export const ContainerMassa = styled.div`
+export const CoverRules = styled.div`
 width: 100%;
 display: block;
-align-items: self-start;
 justify-self: center;
 max-width: 1040px;
 
@@ -26,14 +25,14 @@ max-width: 1040px;
 `
 
 
-export const ImagemFundo = styled.header`
+export const ImageBackground = styled.header`
   width: 100%;
   height: 186px;
   display: flex;
   justify-content: center;
 
 `
-export const ImagemMassa = styled.section`
+export const CoverImage = styled.section`
   width: 100%;
   height: 280px;
   margin-bottom: 56px;
@@ -43,7 +42,7 @@ export const ImagemMassa = styled.section`
 
 `
 
-export const RestauranteLink = styled(Link)`
+export const RestaurantLink = styled(Link)`
   font-size: 18px;
   font-weight: bold;
   color: ${cores.rosa};
@@ -58,7 +57,7 @@ export const Logo = styled.img`
   }
 
 `
-export const Carrinho = styled.a`
+export const CartShopping = styled.a`
   font-size: 18px;
   font-weight: bold;
   color: ${cores.rosa};
@@ -69,13 +68,13 @@ export const Carrinho = styled.a`
 
 
 `
-export const Titulo = styled.h1`
+export const Title = styled.h1`
   font-size: 32px;
   font-weight: bold;
   color: ${cores.branca};
 
 `
-export const Tipo = styled.p`
+export const Type = styled.p`
 
   font-size: 32px;
   font-weight: 100;

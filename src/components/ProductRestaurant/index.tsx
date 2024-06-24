@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
+
 import estrela from '../../assets/images/estrela.svg'
-import  { Card, Descricao, Titulo, Infos, Tag, Nota, Estrela, ImgFood, Detalhes, Botao, Avaliacao, } from './styles'
+
+import  * as S from './styles'
 
 type Props = {
   id: number;
@@ -14,7 +16,7 @@ type Props = {
   capa: string;
 }
 
-const ProductRestaurant = ( {id, image, name, description, destacado,  tipo , nota , capa
+const ProductRestaurant = ( {id, name, description, destacado,  tipo , nota , capa
 }: Props) => {
   const getDescricao = (descricao: string) => {
     if (descricao.length > 95) {
@@ -24,29 +26,29 @@ const ProductRestaurant = ( {id, image, name, description, destacado,  tipo , no
   }
 
 return (
-  <Card>
-    <ImgFood src={capa} alt={name} />
-    <Infos>
-    {destacado ? <Tag>Destaque da semana</Tag> : ''}
-    <Tag>{tipo}</Tag>
-    </Infos>
-    <Detalhes>
+  <S.Card>
+    <S.ImageCard src={capa} alt={name} />
+    <S.Infos>
+    {destacado ? <S.Tag>Destaque da semana</S.Tag> : ''}
+    <S.Tag>{tipo}</S.Tag>
+    </S.Infos>
+    <S.Details>
       <div>
-    <Titulo>{name}</Titulo>
-    <Avaliacao>
-      <Nota>{nota}</Nota>
-      <Estrela src={estrela}></Estrela>
-    </Avaliacao>
+    <S.Title>{name}</S.Title>
+    <S.Assessment>
+      <S.Note>{nota}</S.Note>
+      <S.Star src={estrela}></S.Star>
+    </S.Assessment>
     </div>
-    <Descricao>
+    <S.Description>
       {getDescricao(description)}
-    </Descricao>
+    </S.Description>
     <Link to={`/cardapios/${id}`}>
-      <Botao>Saiba mais</Botao>
+      <S.Button>Saiba mais</S.Button>
     </Link>
-    </Detalhes>
+    </S.Details>
 
-  </Card>
+  </S.Card>
 )
 }
 export default ProductRestaurant

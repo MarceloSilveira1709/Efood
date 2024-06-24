@@ -1,11 +1,13 @@
-import headerImg from '../../assets/images/fundo.png';
-import { Carrinho, Container, ContainerMassa, ImagemFundo, ImagemMassa, Logo, RestauranteLink, Tipo, Titulo } from './styles';
-import logo from '../../assets/images/logo.svg';
 import { open } from '../../store/reducers/cart';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootReducer } from '../../store';
 
+import headerImg from '../../assets/images/fundo.png';
+import logo from '../../assets/images/logo.svg';
+
 import type { Restaurant } from '../../pages/Restaurants';
+
+import * as S from './styles';
 
 export type Props = {
   restaurante: Restaurant;
@@ -21,20 +23,20 @@ const HeaderMenu: React.FC<Props> = ({ restaurante }) => {
 
   return (
     <>
-      <ImagemFundo style={{ backgroundImage: `url(${headerImg})` }}>
-        <Container>
-          <RestauranteLink to="/">Restaurantes</RestauranteLink>
-          <Logo src={logo} alt="Efood" />
-          <Carrinho onClick={openCart}>{items.length} - produto(s) no carrinho</Carrinho>
-        </Container>
-      </ImagemFundo>
+      <S.ImageBackground style={{ backgroundImage: `url(${headerImg})` }}>
+        <S.Container>
+          <S.RestaurantLink to="/">Restaurantes</S.RestaurantLink>
+          <S.Logo src={logo} alt="Efood" />
+          <S.CartShopping onClick={openCart}>{items.length} - produto(s) no carrinho</S.CartShopping>
+        </S.Container>
+      </S.ImageBackground>
 
-      <ImagemMassa style={{ backgroundImage: `url(${restaurante.capa})` }}>
-        <ContainerMassa>
-          <Tipo>{restaurante.tipo}</Tipo>
-          <Titulo>{restaurante.titulo}</Titulo>
-        </ContainerMassa>
-      </ImagemMassa>
+      <S.CoverImage style={{ backgroundImage: `url(${restaurante.capa})` }}>
+        <S.CoverRules>
+          <S.Type>{restaurante.tipo}</S.Type>
+          <S.Title>{restaurante.titulo}</S.Title>
+        </S.CoverRules>
+      </S.CoverImage>
     </>
   );
 };

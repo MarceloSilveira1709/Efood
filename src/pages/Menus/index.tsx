@@ -1,12 +1,12 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Footer from "../../components/Footer";
-import HeaderCardapio from "../../components/HeaderMenu";
-import ProdutoListaCardapio from "../../components/ProductListMenu";
-import Card from "../../components/Card";
 
-export type Cardapio = {
+import Footer from "../../components/Footer";
+import HeaderMenu from "../../components/HeaderMenu";
+import ProductListMenu from "../../components/ProductListMenu";
+
+export type Menu = {
   foto: string;
   preco: number;
   id: number;
@@ -15,7 +15,7 @@ export type Cardapio = {
   porcao: string;
 }
 
-export type Restaurante = {
+export type Restaurant = {
   id: number;
   titulo: string;
   tipo: string;
@@ -26,17 +26,17 @@ export type Restaurante = {
   image: string;
 }
 
-const Cardapios = () => {
+const Menus = () => {
   const { id } = useParams<{ id: string }>();
-  const [cardapio, setCardapio] = useState<Cardapio[]>([]);
-  const [restaurante, setRestaurante] = useState<Restaurante | null>(null);
+  const [cardapio, setCardapio] = useState<Menu[]>([]);
+  const [restaurante, setRestaurante] = useState<Restaurant | null>(null);
 
   useEffect(() => {
     fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
       .then(res => res.json())
       .then(data => {
         console.log("Dados recebidos da API:", data);
-        const mapaRestaurante: Restaurante = {
+        const mapRestaurant: Restaurant = {
           id: data.id,
           titulo: data.titulo,
           tipo: data.tipo,
@@ -47,7 +47,7 @@ const Cardapios = () => {
           image: data.image
         };
         setCardapio(data.cardapio || []);
-        setRestaurante(mapaRestaurante);
+        setRestaurante(mapRestaurant);
       });
   }, [id]);
 
@@ -57,14 +57,14 @@ const Cardapios = () => {
 
   return (
     <>
-      <HeaderCardapio restaurante={restaurante} />
-      <ProdutoListaCardapio foods={cardapio} title="Cardápio" />
+      <HeaderMenu restaurante={restaurante} />
+      <ProductListMenu foods={cardapio} title="Cardápio" />
       <Footer />
     </>
   );
 }
 
-export default Cardapios;
+export default Menus;
 
 
 

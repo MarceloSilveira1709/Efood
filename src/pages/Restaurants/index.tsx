@@ -1,8 +1,9 @@
+import { useGetRestaurantsQuery } from '../../services/api'
+
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import ProdutosLista from "../../components/ProductListRestaurant";
 
-import { useGetRestaurantesQuery } from '../../services/api'
 
 export type Restaurant = {
     id: number;
@@ -15,8 +16,8 @@ export type Restaurant = {
     image: string;
   };
 
-const Restaurantes = () => {
-  const {data: restaurant, isLoading} = useGetRestaurantesQuery ()
+const Restaurants = () => {
+  const {data: restaurant, isLoading} = useGetRestaurantsQuery ()
   return (
     <>
   <Header/>
@@ -28,4 +29,4 @@ const Restaurantes = () => {
 
 
 
-export default Restaurantes
+export default Restaurants

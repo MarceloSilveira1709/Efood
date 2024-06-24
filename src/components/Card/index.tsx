@@ -1,6 +1,8 @@
-import React, { Dispatch, SetStateAction } from 'react';
-import { CardContainer } from "../Checkout/styles";
 import Checkout from '../Checkout';
+
+import React, { Dispatch, SetStateAction } from 'react';
+
+import { CardContainer } from "../Checkout/styles";
 
 interface CardProps {
   setDelivery: Dispatch<SetStateAction<boolean>>;

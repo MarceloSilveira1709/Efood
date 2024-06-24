@@ -1,16 +1,17 @@
-import { Botao, ContainerModal, Fechar, Imagem, Modal, Overlay, Sabor, Texto } from "./styles";
-import fechar from "../../assets/images/fechar.png";
-import { Cardapio } from "../../pages/Menus";
 import { useDispatch } from "react-redux";
 import { add , open} from "../../store/reducers/cart";
 
+import fechar from "../../assets/images/fechar.png";
+import { Menu } from "../../pages/Menus";
+
+import * as S from "./styles";
 type Props = {
-  modalEstaAberto: boolean;
-  setModalEstaAberto: (value: boolean) => void;
-  cardapio: Cardapio;
+  modalIsOpen: boolean;
+  setModalIsOpen: (value: boolean) => void;
+  cardapio: Menu;
 };
 
-const ModalProduct = ({ modalEstaAberto, setModalEstaAberto, cardapio }: Props) => {
+const ModalProduct = ({ modalIsOpen, setModalIsOpen, cardapio }: Props) => {
   const dispatch = useDispatch();
 
   const addToCart = () => {
@@ -19,31 +20,31 @@ const ModalProduct = ({ modalEstaAberto, setModalEstaAberto, cardapio }: Props) 
   };
 
   return (
-    <Overlay>
-      <ContainerModal>
-    <Modal className={modalEstaAberto ? "visivel" : ""}>
-        <Imagem style={{ backgroundImage: `url(${cardapio.foto})` }} />
+    <S.Overlay>
+      <S.ContainerModal>
+    <S.Modal className={modalIsOpen ? "visivel" : ""}>
+        <S.Image style={{ backgroundImage: `url(${cardapio.foto})` }} />
         <div>
-          <Fechar>
+          <S.Close>
             <img
               src={fechar}
               alt="Icone de fechar"
-              onClick={() => setModalEstaAberto(false)}
+              onClick={() => setModalIsOpen(false)}
             />
-          </Fechar>
-          <Sabor>{cardapio.nome}</Sabor>
-          <Texto>{cardapio.descricao}</Texto>
-          <Texto>Serve: {cardapio.porcao}</Texto>
-          <Botao onClick={() => {
+          </S.Close>
+          <S.Taste>{cardapio.nome}</S.Taste>
+          <S.Text>{cardapio.descricao}</S.Text>
+          <S.Text>Serve: {cardapio.porcao}</S.Text>
+          <S.Button onClick={() => {
             addToCart();
-            setModalEstaAberto(false);
+            setModalIsOpen(false);
           }}>
             Adicionar ao carrinho - {cardapio.preco}
-          </Botao>
+          </S.Button>
         </div>
-    </Modal>
-    </ContainerModal>
-    </Overlay>
+    </S.Modal>
+    </S.ContainerModal>
+    </S.Overlay>
   );
 };
 

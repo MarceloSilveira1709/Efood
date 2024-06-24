@@ -41,14 +41,14 @@ export const Overlay = styled.div`
   z-index: 1;
 `;
 
-export const Fechar = styled.header`
+export const Close = styled.header`
   display: flex;
   cursor: pointer;
   padding: 8px 8px;
   justify-content: flex-end;
 `;
 
-export const Botao = styled.button`
+export const Button = styled.button`
   width: 218px;
   background-color: ${cores.bege};
   color: ${cores.rosa};
@@ -60,7 +60,7 @@ export const Botao = styled.button`
   cursor: pointer;
 `;
 
-export const Imagem = styled.div`
+export const Image = styled.div`
   margin: 24px;
   width: 100%;
   display: block;
@@ -71,12 +71,12 @@ export const Imagem = styled.div`
   justify-content: start;
 `;
 
-export const Sabor = styled.h2`
+export const Taste = styled.h2`
   font-size: 18px;
   font-weight: bold;
 `;
 
-export const Texto = styled.p`
+export const Text = styled.p`
   margin-top: 16px;
   font-size: 14px;
 `;

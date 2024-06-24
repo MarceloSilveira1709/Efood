@@ -1,10 +1,11 @@
-
-import React, { useState } from 'react';
-import {  Botao,  CartContainer,  InfoProduto,  Overlay,  Prato,  Preco,  Produto,  Sidebar,  Total,} from './styles';
+import  { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootReducer } from '../../store';
+
 import { close, remove } from '../../store/reducers/cart';
+
 import Card from '../Card';
+import * as S from './styles';
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
@@ -27,26 +28,26 @@ const Cart = () => {
 
   return (
     <>
-      <CartContainer className={isOpen ? 'is-open' : ''}>
-        <Overlay onClick={closeCart} />
-        <Sidebar>
+      <S.CartContainer className={isOpen ? 'is-open' : ''}>
+        <S.Overlay onClick={closeCart} />
+        <S.Sidebar>
           {items.map((item) => (
-            <Produto key={item.id}>
+            <S.Product key={item.id}>
               <img src={item.foto} alt={item.nome} />
-              <InfoProduto>
-                <Prato>{item.nome}</Prato>
-                <Preco>R$ {item.preco}</Preco>
+              <S.InfoProduct>
+                <S.Dish>{item.nome}</S.Dish>
+                <S.Price>R$ {item.preco}</S.Price>
                 <button onClick={() => removeItem(item.id)} type="button">
                 </button>
-              </InfoProduto>
-            </Produto>
+              </S.InfoProduct>
+            </S.Product>
           ))}
-          <Total>
+          <S.Totals>
             <p>Valor total </p>R$ {getTotalPrice()}
-          </Total>
-          <Botao onClick={() => setIsCardOpen(true)}>Continuar para a entrega</Botao>
-        </Sidebar>
-      </CartContainer>
+          </S.Totals>
+          <S.Button onClick={() => setIsCardOpen(true)}>Continuar para a entrega</S.Button>
+        </S.Sidebar>
+      </S.CartContainer>
       {isCardOpen && <Card setDelivery={setIsCardOpen} />}
     </>
   );

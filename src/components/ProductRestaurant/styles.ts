@@ -9,13 +9,13 @@ export const Card = styled.div`
   max-width: 474px;
 
 `
-export const ImgFood = styled.img`
+export const ImageCard = styled.img`
   display: block;
   width: 100%;
   height: 251px;
   object-fit: cover;
 `
-export const Titulo = styled.h2`
+export const Title = styled.h2`
 font-weight: bold;
 font-size: 18px;
 color: ${cores.rosa};
@@ -24,7 +24,7 @@ padding-top: 8px;
 display:flex;
 `
 
-export const Descricao = styled.p`
+export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
   margin: 8px;
@@ -51,18 +51,18 @@ export const Tag = styled.div`
   display: inline-block;
   margin: 8px;
 `
-export const Nota = styled.span`
+export const Note = styled.span`
   color: ${cores.rosa};
   font-size: 20px;
   font-Weight: bold;
 `
 
-export const Estrela = styled.img`
+export const Star = styled.img`
   width: 20px;
   height: 20px;
   margin: 8px;
 `
-export const Detalhes = styled.div`
+export const Details = styled.div`
   display: block;
   border: solid 1px ${cores.rosa};
   border-top: none;
@@ -71,12 +71,12 @@ export const Detalhes = styled.div`
     justify-content: space-between;
   }
 `
-export const Avaliacao = styled.div`
+export const Assessment = styled.div`
   display: flex;
   align-items: center;
   }
 `
-export const Botao = styled.button`
+export const Button = styled.button`
 background-color: ${cores.rosa};
   color: ${cores.bege};
   max-width: 100%;
