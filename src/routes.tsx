@@ -1,6 +1,6 @@
 import {Routes, Route} from 'react-router-dom'
-import Cardapios from './pages/Cardapios'
-import Restaurantes from './pages/Restaurantes'
+import Cardapios from './pages/Menus'
+import Restaurantes from './pages/Restaurants'
 
 const Rotas = () => (
   <Routes>

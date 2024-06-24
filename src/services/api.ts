@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { Restaurante } from '../pages/Restaurantes';
-import { Cardapio } from '../pages/Cardapios';
+import { Restaurant } from '../pages/Restaurants';
+import { Cardapio } from '../pages/Menus';
 
 type Product = {
   id: number
@@ -38,7 +38,7 @@ const api = createApi({
     baseUrl: 'https://fake-api-tau.vercel.app/api/efood'
   }),
   endpoints: (builder) => ({
-    getRestaurantes: builder.query<Restaurante[], void>({
+    getRestaurantes: builder.query<Restaurant[], void>({
       query: () => 'restaurantes'
     }),
     getCardapio: builder.query<Cardapio[], string>({

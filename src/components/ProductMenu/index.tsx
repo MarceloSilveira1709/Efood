@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Descricao, Titulo, Botao } from "./styles";
-import { Cardapio } from "../../pages/Cardapios";
+import { Cardapio } from "../../pages/Menus";
 
 type Props = {
   id: number;
@@ -14,7 +14,7 @@ type Props = {
   setProdutoSelecionado: React.Dispatch<React.SetStateAction<Cardapio | null>>;
 };
 
-const ProdutoCardapio: React.FC<Props> = ({
+const ProductMenu: React.FC<Props> = ({
   id,
   foto,
   nome,
@@ -54,7 +54,7 @@ const ProdutoCardapio: React.FC<Props> = ({
   );
 };
 
-export default ProdutoCardapio;
+export default ProductMenu;
 
 
 

@@ -14,7 +14,7 @@ type Props = {
   capa: string;
 }
 
-const ProdutoRestaurante= ( {id, image, name, description, destacado,  tipo , nota , capa
+const ProductRestaurant = ( {id, image, name, description, destacado,  tipo , nota , capa
 }: Props) => {
   const getDescricao = (descricao: string) => {
     if (descricao.length > 95) {
@@ -49,4 +49,4 @@ return (
   </Card>
 )
 }
-export default ProdutoRestaurante
+export default ProductRestaurant

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CardContainer, Overlay, Sidebar, FormRow, InputGroup } from './styles';
-import { Botao } from '../ModalProduto/styles';
+import { Botao } from '../ModalProduct/styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { usePurchaseMutation } from '../../services/api';

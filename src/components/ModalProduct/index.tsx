@@ -1,6 +1,6 @@
 import { Botao, ContainerModal, Fechar, Imagem, Modal, Overlay, Sabor, Texto } from "./styles";
 import fechar from "../../assets/images/fechar.png";
-import { Cardapio } from "../../pages/Cardapios";
+import { Cardapio } from "../../pages/Menus";
 import { useDispatch } from "react-redux";
 import { add , open} from "../../store/reducers/cart";
 
@@ -10,7 +10,7 @@ type Props = {
   cardapio: Cardapio;
 };
 
-const ModalProduto = ({ modalEstaAberto, setModalEstaAberto, cardapio }: Props) => {
+const ModalProduct = ({ modalEstaAberto, setModalEstaAberto, cardapio }: Props) => {
   const dispatch = useDispatch();
 
   const addToCart = () => {
@@ -47,5 +47,5 @@ const ModalProduto = ({ modalEstaAberto, setModalEstaAberto, cardapio }: Props) 
   );
 };
 
-export default ModalProduto;
+export default ModalProduct;
 

@@ -1,22 +1,22 @@
 
 import { useState } from "react";
 import { Lista } from "./styles";
-import { Container } from "../ProdutosListaRestaurante/styles";
-import { Cardapio } from "../../pages/Cardapios";
-import ProdutoCardapio from "../ProdutoCardapio";
-import ModalProduto from "../ModalProduto";
+import { Container } from "../ProductListRestaurant/styles";
+import { Cardapio } from "../../pages/Menus";
+import ProdutoCardapio from "../ProductMenu";
+import ModalProduto from "../ModalProduct";
 
 export type Props = {
   foods: Cardapio[];
   title: string
 };
 
-const ProdutosListaCardapio = ({ foods }: Props) => {
+const ProductListMenu = ({ foods }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false);
   const [produtoSelecionado, setProdutoSelecionado] = useState<Cardapio | null>(null);
 
   const getFoodTags = (food: Cardapio) => {
-    const tags = ['']; // Aqui você pode preencher com tags reais se necessário
+    const tags = [''];
     return tags;
   };
 
@@ -51,6 +51,6 @@ const ProdutosListaCardapio = ({ foods }: Props) => {
   );
 };
 
-export default ProdutosListaCardapio;
+export default ProductListMenu;
 
 

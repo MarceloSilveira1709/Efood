@@ -1,10 +1,10 @@
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import ProdutosLista from "../../components/ProdutosListaRestaurante";
+import ProdutosLista from "../../components/ProductListRestaurant";
 
 import { useGetRestaurantesQuery } from '../../services/api'
 
-export type Restaurante = {
+export type Restaurant = {
     id: number;
     titulo: string;
     tipo: string;
@@ -16,11 +16,11 @@ export type Restaurante = {
   };
 
 const Restaurantes = () => {
-  const {data: restaurante, isLoading} = useGetRestaurantesQuery ()
+  const {data: restaurant, isLoading} = useGetRestaurantesQuery ()
   return (
     <>
   <Header/>
-  <ProdutosLista  foods={restaurante}  />
+  <ProdutosLista  foods={restaurant}  />
   <Footer />
   </>
   )

@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Footer from "../../components/Footer";
-import HeaderCardapio from "../../components/HeaderCardapio";
-import ProdutoListaCardapio from "../../components/ProdutoListaCardapio";
+import HeaderCardapio from "../../components/HeaderMenu";
+import ProdutoListaCardapio from "../../components/ProductListMenu";
 import Card from "../../components/Card";
 
 export type Cardapio = {
