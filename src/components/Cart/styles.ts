@@ -1,16 +1,15 @@
-import styled from "styled-components";
-import { colors } from "../../styles";
-import lixeira from '../../assets/images/lixeira.png'
-
+import styled from 'styled-components';
+import { colors } from '../../styles';
+import closed from '../../assets/images/lixeira.png';
 
 export const Overlay = styled.div`
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-background-color: #000;
-opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.7;
 `;
 
 export const CartContainer = styled.div`
@@ -28,17 +27,39 @@ export const CartContainer = styled.div`
   }
 `;
 
+export const Sidebar = styled.aside`
+  background-color: ${colors.pink};
+  z-index: 1;
+  padding: 38px 8px 0 8px;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+
+  &.empty {
+    align-items: center;
+  }
+
+  >p {
+    font-size: 18px;
+    font-weight: bold;
+    color: ${colors.beige};
+    margin-top: 20px;
+  }
+`;
+
 export const Product = styled.div`
   background-color: ${colors.beige};
   max-width: 344px;
-  max-height: 100px;
+  height: 100px;
   display: flex;
   margin-bottom: 16px;
   position: relative;
 
   img {
     width: 80px;
-    height:80px;
+    height: 80px;
     padding: 8px;
     object-fit: cover;
   }
@@ -46,7 +67,7 @@ export const Product = styled.div`
 
 export const InfoProduct = styled.li`
   button {
-    background-image: url(${lixeira});
+    background-image: url(${closed});
     width: 16px;
     height: 16px;
     border: none;
@@ -56,13 +77,6 @@ export const InfoProduct = styled.li`
     bottom: 8px;
     cursor: pointer;
   }
-`;
-
-
-export const Sidebar = styled.aside`
-  background-color: ${colors.pink};
-  z-index: 1;
-  padding: 38px 8px 0 8px;
 `;
 
 export const Dish = styled.h2`
@@ -88,7 +102,6 @@ export const Totals = styled.div`
   justify-content: space-between;
 `;
 
-
 export const Button = styled.button`
   width: 300px;
   background-color: ${colors.beige};
@@ -98,7 +111,8 @@ export const Button = styled.button`
   padding: 4px 6px;
   border: none;
   cursor: pointer;
-`
+`;
+
 
 
 

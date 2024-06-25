@@ -83,6 +83,10 @@ export const InputGroup = styled.div<InputGroupProps>`
     font-weight: bold;
     border: 1px solid ${colors.beige};
     margin-bottom: 18px;
+
+    &.error {
+      border: 1px solid red;
+    }
   }
 `;
 
