@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { breakpoints, cores } from '../../styles';
+import { breakpoints, colors } from '../../styles';
 
 export const Image = styled.header`
   width: 100%;
@@ -18,7 +18,7 @@ export const Title = styled.h1`
   font-size: 36px;
   font-weight: bold;
   max-width: 540px;
-  color: ${cores.rosa};
+  color: ${colors.pink};
   margin-bottom: 40px;
   text-align: center;
   `

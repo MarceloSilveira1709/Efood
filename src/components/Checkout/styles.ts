@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { cores } from '../../styles';
+import { colors } from '../../styles';
 
 type InputGroupProps = {
   maxWidth?: string;
@@ -22,7 +22,7 @@ export const CardContainer = styled.div`
 
 export const Sidebar = styled.aside`
   display: block;
-  background-color: ${cores.rosa};
+  background-color: ${colors.pink};
   padding: 38px 8px 0 8px;
   width: 360px;
   height: 100%;
@@ -34,20 +34,20 @@ export const Sidebar = styled.aside`
   h2 {
     font-size: 16px;
     font-weight: bold;
-    color: ${cores.bege};
+    color: ${colors.beige};
     margin-bottom: 16px;
   }
 
   h3 {
     font-size: 16px;
     font-weight: bold;
-    color: ${cores.bege};
-    margin-bottom: 16px;
+    color: ${colors.beige};
+
   }
 
   p{
     font-size: 14px;
-    color: ${cores.bege};
+    color: ${colors.beige};
     margin-bottom: 20px;
   }
 `;
@@ -66,7 +66,6 @@ export const InputGroup = styled.div<InputGroupProps>`
   flex: auto;
   display: flex;
   flex-direction: column;
-  margin-top: 8px;
 
   max-width: ${(props) => props.maxWidth || 'auto'};
 
@@ -74,15 +73,16 @@ export const InputGroup = styled.div<InputGroupProps>`
     margin-bottom: 8px;
     font-size: 16px;
     font-weight: bold;
-    color: ${cores.bege};
+    color: ${colors.beige};
   }
 
   input {
     padding: 8px;
-    background-color: ${cores.bege};
+    background-color: ${colors.beige};
     color: #000;
     font-weight: bold;
-    border: 1px solid ${cores.bege};
+    border: 1px solid ${colors.beige};
+    margin-bottom: 18px;
   }
 `;
 
@@ -93,5 +93,17 @@ export const FormRow = styled.div`
   gap: 8px;
   margin-top: 8px;
 `;
+
+export const Button = styled.button`
+  width: 344px;
+  background-color: ${colors.beige};
+  color: ${colors.pink};
+  font-size: 14px;
+  font-weight: bold;
+  padding: 4px 6px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 8px;
+`
 
 

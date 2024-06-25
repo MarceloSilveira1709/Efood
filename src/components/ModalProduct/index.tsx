@@ -22,7 +22,7 @@ const ModalProduct = ({ modalIsOpen, setModalIsOpen, cardapio }: Props) => {
   return (
     <S.Overlay>
       <S.ContainerModal>
-    <S.Modal className={modalIsOpen ? "visivel" : ""}>
+    <S.Modal className={modalIsOpen ? "is-visible" : ""}>
         <S.Image style={{ backgroundImage: `url(${cardapio.foto})` }} />
         <div>
           <S.Close>

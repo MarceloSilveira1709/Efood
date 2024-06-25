@@ -1,10 +1,10 @@
 import styled from "styled-components"
-import { cores } from "../../styles"
+import { colors } from "../../styles"
 
 
 
 export const Card = styled.div`
-  background-color: ${cores.rosa};
+  background-color: ${colors.pink};
   position: relative;
   margin-bottom: 48px;
   max-width: 320px;
@@ -21,7 +21,7 @@ img{
 export const Title = styled.h2`
   font-weight: bold;
   font-size: 18px;
-  color: ${cores.bege};
+  color: ${colors.beige};
   padding-left: 8px;
 `
 
@@ -30,7 +30,7 @@ export const Description = styled.p`
   line-height: 22px;
   margin: 8px;
   display: block;
-  color: ${cores.bege};
+  color: ${colors.beige};
 
 
 `
@@ -39,12 +39,12 @@ export const Infos = styled.div`
   position: absolute;
   top:16px;
   right: 16px;
-  backgroud-color: ${cores.rosa};
+  backgroud-color: ${colors.pink};
 `
 export const Button = styled.button`
   width: 300px;
-  background-color: ${cores.bege};
-  color: ${cores.rosa};
+  background-color: ${colors.beige};
+  color: ${colors.pink};
   font-size: 14px;
   font-weight: bold;
   padding: 4px 6px;

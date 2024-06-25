@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { breakpoints, cores } from "../../styles";
+import { breakpoints, colors } from "../../styles";
 
 export const ContainerModal = styled.div`
   display: flex;
@@ -14,7 +14,7 @@ export const ContainerModal = styled.div`
 
 export const Modal = styled.div`
   position: fixed;
-  background-color: ${cores.rosa};
+  background-color: ${colors.pink};
   display: flex;
   height: 332px;
   max-width: 1036px;
@@ -22,7 +22,7 @@ export const Modal = styled.div`
   z-index: 2;
   }
 
-  &.visivel {
+  &.is-visible {
     display: flex;
     @media (max-width: ${breakpoints.tablet}) {
       display: block;
@@ -50,8 +50,8 @@ export const Close = styled.header`
 
 export const Button = styled.button`
   width: 218px;
-  background-color: ${cores.bege};
-  color: ${cores.rosa};
+  background-color: ${colors.beige};
+  color: ${colors.pink};
   font-size: 14px;
   font-weight: bold;
   padding: 4px 6px;

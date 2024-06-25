@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { cores } from "../../styles";
+import { colors } from "../../styles";
 
 
 export const Card = styled.div`
-  background-color: ${cores.branca};
+  background-color: ${colors.white};
   position: relative;
   margin-bottom: 48px;
   max-width: 474px;
@@ -18,7 +18,7 @@ export const ImageCard = styled.img`
 export const Title = styled.h2`
 font-weight: bold;
 font-size: 18px;
-color: ${cores.rosa};
+color: ${colors.pink};
 padding-left: 8px;
 padding-top: 8px;
 display:flex;
@@ -29,7 +29,7 @@ export const Description = styled.p`
   line-height: 22px;
   margin: 8px;
   display: block;
-  color: ${cores.rosa};
+  color: ${colors.pink};
 `
 
 export const Infos = styled.div`
@@ -40,8 +40,8 @@ export const Infos = styled.div`
 
 `
 export const Tag = styled.div`
-  background-color: ${cores.rosa};
-  color: ${cores.bege};
+  background-color: ${colors.pink};
+  color: ${colors.beige};
   max-width: 100%;
   height: 26px;
   text-align: center;
@@ -52,7 +52,7 @@ export const Tag = styled.div`
   margin: 8px;
 `
 export const Note = styled.span`
-  color: ${cores.rosa};
+  color: ${colors.pink};
   font-size: 20px;
   font-Weight: bold;
 `
@@ -64,7 +64,7 @@ export const Star = styled.img`
 `
 export const Details = styled.div`
   display: block;
-  border: solid 1px ${cores.rosa};
+  border: solid 1px ${colors.pink};
   border-top: none;
   div{
     display:flex;
@@ -77,8 +77,8 @@ export const Assessment = styled.div`
   }
 `
 export const Button = styled.button`
-background-color: ${cores.rosa};
-  color: ${cores.bege};
+background-color: ${colors.pink};
+  color: ${colors.beige};
   max-width: 100%;
   height: 26px;
   text-align: center;

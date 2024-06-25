@@ -1,11 +1,11 @@
 import styled from "styled-components"
-import { cores } from "../../styles"
+import { colors } from "../../styles"
 
 export const Container = styled.footer`
   width: 100%;
   height: 300px;
-  background-color: ${cores.bege};
-  color: ${cores.rosa};
+  background-color: ${colors.beige};
+  color: ${colors.lightBeige};
   font-size: 10px;
   display: grid;
   text-align: center;

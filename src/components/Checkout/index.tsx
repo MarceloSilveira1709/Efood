@@ -4,7 +4,8 @@ import { usePurchaseMutation } from '../../services/api';
 import React, { useState } from 'react';
 
 import * as S from './styles';
-import { Button } from '../Cart/styles';
+import { Button } from './styles';
+
 
 interface CheckoutProps {
   setDelivery: (value: boolean) => void;
@@ -106,6 +107,8 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
     if (estaAlterado && estaInvalido) return message;
     return '';
   };
+
+
 
   return (
     <S.CardContainer>

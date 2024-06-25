@@ -51,7 +51,7 @@ const ProductMenu: React.FC<Props> = ({
       <img src={foto} alt={nome} />
       <S.Title>{nome}</S.Title>
       <S.Description>{getDescricao(descricao)}</S.Description>
-      <S.Button>Ver detalhes</S.Button>
+      <S.Button title={`Clique aqui para conhecer melhor o ${nome}`}>Ver detalhes</S.Button>
     </S.Card>
   );
 };

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { breakpoints, cores } from '../../styles';
+import { breakpoints, colors } from '../../styles';
 import { Link } from "react-router-dom";
 
 export const Container = styled.div`
@@ -45,7 +45,7 @@ export const CoverImage = styled.section`
 export const RestaurantLink = styled(Link)`
   font-size: 18px;
   font-weight: bold;
-  color: ${cores.rosa};
+  color: ${colors.pink};
   text-decoration: none;
 `;
 
@@ -60,7 +60,7 @@ export const Logo = styled.img`
 export const CartShopping = styled.a`
   font-size: 18px;
   font-weight: bold;
-  color: ${cores.rosa};
+  color: ${colors.pink};
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 15px;
@@ -71,14 +71,14 @@ export const CartShopping = styled.a`
 export const Title = styled.h1`
   font-size: 32px;
   font-weight: bold;
-  color: ${cores.branca};
+  color: ${colors.white};
 
 `
 export const Type = styled.p`
 
   font-size: 32px;
   font-weight: 100;
-  color: ${cores.branca};
+  color: ${colors.white};
   margin-top: 25px;
   margin-bottom: 150px
 `

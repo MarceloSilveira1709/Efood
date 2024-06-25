@@ -44,7 +44,7 @@ return (
       {getDescricao(description)}
     </S.Description>
     <Link to={`/cardapios/${id}`}>
-      <S.Button>Saiba mais</S.Button>
+      <S.Button title={`Clique aqui para ver o menu do restaurante ${name}`}>Saiba mais</S.Button>
     </Link>
     </S.Details>
 
