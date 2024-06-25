@@ -2,7 +2,6 @@ import { useDispatch } from "react-redux";
 import { add , open} from "../../store/reducers/cart";
 
 import fechar from "../../assets/images/fechar.png";
-import { Menu } from "../../pages/Menus";
 
 import * as S from "./styles";
 type Props = {

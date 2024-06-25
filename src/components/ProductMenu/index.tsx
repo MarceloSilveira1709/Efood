@@ -1,7 +1,5 @@
 import React from "react";
 
-import { Menu } from "../../pages/Menus";
-
 import * as S from "./styles";
 
 type Props = {

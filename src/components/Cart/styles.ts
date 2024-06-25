@@ -37,7 +37,7 @@ export const Sidebar = styled.aside`
   flex-direction: column;
 
 
-  &.empty {
+  &.empty-text {
     align-items: center;
   }
 

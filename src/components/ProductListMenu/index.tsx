@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-import { Menu } from "../../pages/Menus";
 import ModalProduct from "../ModalProduct";
 import ProductMenu from "../ProductMenu";
 

@@ -26,7 +26,7 @@ const Cart = () => {
     <>
       <S.CartContainer className={isOpen ? 'is-open' : ''}>
         <S.Overlay onClick={closeCart} />
-        <S.Sidebar className={items.length === 0 ? 'empty' : ''}>
+        <S.Sidebar className={items.length === 0 ? 'empty-text' : ''}>
           {items.length === 0 ? (
             <p>Carrinho vazio</p>
           ) : (

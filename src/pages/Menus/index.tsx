@@ -6,26 +6,6 @@ import Footer from "../../components/Footer";
 import HeaderMenu from "../../components/HeaderMenu";
 import ProductListMenu from "../../components/ProductListMenu";
 
-export type Menu = {
-  foto: string;
-  preco: number;
-  id: number;
-  nome: string;
-  descricao: string;
-  porcao: string;
-}
-
-export type Restaurant = {
-  id: number;
-  titulo: string;
-  tipo: string;
-  capa: string;
-  descricao: string;
-  avaliacao: number;
-  destacado: boolean;
-  image: string;
-}
-
 const Menus = () => {
   const { id } = useParams<{ id: string }>();
   const [cardapio, setCardapio] = useState<Menu[]>([]);

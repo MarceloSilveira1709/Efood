@@ -5,8 +5,6 @@ import { RootReducer } from '../../store';
 import headerImg from '../../assets/images/fundo.png';
 import logo from '../../assets/images/logo.svg';
 
-import type { Restaurant } from '../../pages/Restaurants';
-
 import * as S from './styles';
 
 export type Props = {
@@ -27,7 +25,7 @@ const HeaderMenu: React.FC<Props> = ({ restaurante }) => {
         <S.Container>
           <S.RestaurantLink to="/">Restaurantes</S.RestaurantLink>
           <S.Logo src={logo} alt="Efood" />
-          <S.CartShopping onClick={openCart}>{items.length} - produto(s) no carrinho</S.CartShopping>
+          <S.CartShopping role='button' onClick={openCart}>{items.length} - produto(s) no carrinho</S.CartShopping>
         </S.Container>
       </S.ImageBackground>
 

@@ -57,10 +57,11 @@ export const Logo = styled.img`
   }
 
 `
-export const CartShopping = styled.a`
+export const CartShopping = styled.span`
   font-size: 18px;
   font-weight: bold;
   color: ${colors.pink};
+  cursor: pointer;
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 15px;

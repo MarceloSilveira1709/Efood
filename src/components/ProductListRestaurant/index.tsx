@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Produto from '../ProductRestaurant';
-import { Restaurant } from '../../pages/Restaurants';
 
 import { Container, List } from './styles';
 

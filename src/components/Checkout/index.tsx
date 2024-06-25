@@ -3,12 +3,12 @@ import { useFormik } from 'formik';
 import { usePurchaseMutation } from '../../services/api';
 import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
+import InputMask from 'react-input-mask';
 
 import * as S from './styles';
 import { Button } from './styles';
 
 import { RootReducer } from '../../store';
-
 
 interface CheckoutProps {
   setDelivery: (value: boolean) => void;
@@ -17,10 +17,10 @@ interface CheckoutProps {
 const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
   const [isPaymentVisible, setIsPaymentVisible] = useState(false);
   const [isDeliveryVisible, setIsDeliveryVisible] = useState(true);
+  const [isOrderCompleted, setIsOrderCompleted] = useState(false);
 
-  const [purchase, {  data, isSuccess }] = usePurchaseMutation();
-  const {items} = useSelector ((state: RootReducer) => state.cart)
-
+  const [purchase, { data, isSuccess }] = usePurchaseMutation();
+  const { items } = useSelector((state: RootReducer) => state.cart);
 
   const formAddressIsValid = () => {
     setIsPaymentVisible(true);
@@ -62,68 +62,67 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
       number: Yup.string()
         .min(1, 'Preencha os dados corretamente')
         .required('Campo obrigatório'),
-
       cardDisplayName: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema),
+        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      ),
       cardNumber: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema),
+        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      ),
       cardCode: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema),
+        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      ),
       expiresMonth: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema),
+        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      ),
       expiresYear: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema),
+        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      ),
     }),
-    onSubmit: (values) => {
-      purchase({
+    onSubmit: async (values) => {
+      await purchase({
         delivery: {
           receiver: values.receiver,
           address: values.address,
           city: values.city,
           cep: Number(values.cep),
           number: Number(values.number),
-          complement: values.complement
+          complement: values.complement,
         },
         payment: {
           card: {
             name: values.cardDisplayName,
             number: values.cardNumber,
             expires: {
-              month: 1,
-              year: 2023
+              month: Number(values.expiresMonth),
+              year: Number(values.expiresYear),
             },
-            code: Number(values.cardCode)
-          }
+            code: Number(values.cardCode),
+          },
         },
-        products: [
-          {
-            id: 1,
-            price: 10
-          }
-        ]
+        products: items.map((item) => ({
+          id: item.id,
+          price: item.preco as number,
+        })),
       });
+      setIsOrderCompleted(true);
     },
   });
 
-const checkInputHasError = (fieldName: string) => {
-  const isTouched = fieldName in form.touched
-  const isInvalid  = fieldName in form.errors
-  const hasError = isTouched && isInvalid
+  const checkInputHasError = (fieldName: string) => {
+    const isTouched = fieldName in form.touched;
+    const isInvalid = fieldName in form.errors;
+    const hasError = isTouched && isInvalid;
 
-  return hasError
-}
-
-if (items.length === 0) {
-
-}
+    return hasError;
+  };
 
   return (
     <S.CardContainer>
       <S.Overlay />
       <S.Sidebar>
-        {isSuccess ? (
-          <div className='Realizado'>
-            <h3>Pedido realizado - 'ORDER id'</h3>
+        {isOrderCompleted && isSuccess && data ? (
+          <div className="Realizado">
+            <h3>Pedido realizado - {data?.orderId}</h3>
             <p>
               Estamos felizes em informar que seu pedido já está em processo de
               preparação e, em breve, será entregue no endereço fornecido.
@@ -151,156 +150,177 @@ if (items.length === 0) {
                 <S.InputGroup>
                   <label htmlFor="receiver">Quem irá receber</label>
                   <input
-                  id="receiver"
-                  type="text"
-                  name='receiver'
-                  value={form.values.receiver}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
-                  className={checkInputHasError('receiver') ? 'error' : ''}
+                    id="receiver"
+                    type="text"
+                    name="receiver"
+                    value={form.values.receiver}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError('receiver') ? 'error' : ''}
                   />
-
                 </S.InputGroup>
                 <S.InputGroup>
                   <label htmlFor="address">Endereço</label>
                   <input
-                  id="address"
-                  type="text"
-                  name='address'
-                  value={form.values.address}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
-                  className={checkInputHasError('address') ? 'error' : ''}
+                    id="address"
+                    type="text"
+                    name="address"
+                    value={form.values.address}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError('address') ? 'error' : ''}
                   />
-
                 </S.InputGroup>
                 <S.InputGroup>
                   <label htmlFor="city">Cidade</label>
                   <input
-                  id="city"
-                  type="text" name='city'
-                  value={form.values.city}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
-                  className={checkInputHasError('city') ? 'error' : ''}
+                    id="city"
+                    type="text"
+                    name="city"
+                    value={form.values.city}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError('city') ? 'error' : ''}
                   />
-
                 </S.InputGroup>
                 <S.FormRow>
                   <S.InputGroup maxWidth="155px">
                     <label htmlFor="cep">Cep</label>
-                    <input
-                    id="cep"
-                    type="text"
-                    name='cep'
-                    value={form.values.cep}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                    className={checkInputHasError('cep') ? 'error' : ''}
+                    <InputMask
+                      id="cep"
+                      type="text"
+                      name="cep"
+                      value={form.values.cep}
+                      onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      className={checkInputHasError('cep') ? 'error' : ''}
+                      mask="99999-999"
                     />
-
                   </S.InputGroup>
                   <S.InputGroup maxWidth="155px">
                     <label htmlFor="number">Número</label>
                     <input
-                    id="number"
-                    type="text"
-                    name='number'
-                    value={form.values.number}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                    className={checkInputHasError('number') ? 'error' : ''}
+                      id="number"
+                      type="text"
+                      name="number"
+                      value={form.values.number}
+                      onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      className={checkInputHasError('number') ? 'error' : ''}
                     />
-
                   </S.InputGroup>
                 </S.FormRow>
                 <S.InputGroup>
                   <label htmlFor="complement">Complemento (opcional)</label>
                   <input
-                  id="complement"
-                  type="text"
-                  name='complement'
-                  value={form.values.complement}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur} />
+                    id="complement"
+                    type="text"
+                    name="complement"
+                    value={form.values.complement}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                  />
                 </S.InputGroup>
-                <Button title="Clique aqui para continuar com o pagamento" onClick={formAddressIsValid}>Continuar com pagamento</Button>
-                <Button title="Clique aqui para retornar ao carrinho" onClick={() => setDelivery(false)}>Voltar para o carrinho</Button>
+                <Button
+                  type="button"
+                  title="Clique aqui para continuar com o pagamento"
+                  onClick={formAddressIsValid}
+                >
+                  Continuar com pagamento
+                </Button>
+                <Button
+                  type="button"
+                  title="Clique aqui para retornar ao carrinho"
+                  onClick={() => setDelivery(false)}
+                >
+                  Voltar para o carrinho
+                </Button>
               </>
             )}
             {isPaymentVisible && (
               <>
                 <h2>Pagamento - Valor a pagar de R$ 190,90</h2>
-                <S.InputGroup >
+                <S.InputGroup>
                   <label htmlFor="cardDisplayName">Nome no cartão</label>
                   <input
-                  id="cardDisplayName"
-                  type="text"
-                  name='cardDisplayName'
-                  value={form.values.cardDisplayName}
-                  onChange={form.handleChange}
-                  onBlur={form.handleBlur}
-                  className={checkInputHasError('cardDisplayName') ? 'error' : ''}
+                    id="cardDisplayName"
+                    type="text"
+                    name="cardDisplayName"
+                    value={form.values.cardDisplayName}
+                    onChange={form.handleChange}
+                    onBlur={form.handleBlur}
+                    className={checkInputHasError('cardDisplayName') ? 'error' : ''}
                   />
-
                 </S.InputGroup>
                 <S.FormRow>
                   <S.InputGroup>
                     <label htmlFor="cardNumber">Número do cartão</label>
-                    <input
-                    id="cardNumber"
-                    type="text"
-                    name='cardNumber'
-                    value={form.values.cardNumber}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                    className={checkInputHasError('cardNumber') ? 'error' : ''}
+                    <InputMask
+                      id="cardNumber"
+                      type="text"
+                      name="cardNumber"
+                      value={form.values.cardNumber}
+                      onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      className={checkInputHasError('cardNumber') ? 'error' : ''}
+                      mask="9999 9999 9999 9999"
                     />
-
                   </S.InputGroup>
                   <S.InputGroup maxWidth="100px">
                     <label htmlFor="cardCode">CVV</label>
-                    <input
-                    id="cardCode"
-                    type="text"
-                    name='cardCode'
-                    value={form.values.cardCode}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                    className={checkInputHasError('cardCode') ? 'error' : ''}/>
-
+                    <InputMask
+                      id="cardCode"
+                      type="text"
+                      name="cardCode"
+                      value={form.values.cardCode}
+                      onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      className={checkInputHasError('cardCode') ? 'error' : ''}
+                      mask="999"
+                    />
                   </S.InputGroup>
                 </S.FormRow>
                 <S.FormRow>
                   <S.InputGroup maxWidth="155px">
                     <label htmlFor="expiresMonth">Mês de vencimento</label>
-                    <input
-                    id="expiresMonth"
-                    type="text"
-                    name='expiresMonth'
-                    value={form.values.expiresMonth}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                    className={checkInputHasError('expiresMonth') ? 'error' : ''}
+                    <InputMask
+                      id="expiresMonth"
+                      type="text"
+                      name="expiresMonth"
+                      value={form.values.expiresMonth}
+                      onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      className={checkInputHasError('expiresMonth') ? 'error' : ''}
+                      mask="99"
                     />
-
                   </S.InputGroup>
                   <S.InputGroup maxWidth="155px">
                     <label htmlFor="expiresYear">Ano de vencimento</label>
-                    <input
-                    id="expiresYear"
-                    type="text"
-                    name='expiresYear'
-                    value={form.values.expiresYear}
-                    onChange={form.handleChange}
-                    onBlur={form.handleBlur}
-                    className={checkInputHasError('expiresYear') ? 'error' : ''}
+                    <InputMask
+                      id="expiresYear"
+                      type="text"
+                      name="expiresYear"
+                      value={form.values.expiresYear}
+                      onChange={form.handleChange}
+                      onBlur={form.handleBlur}
+                      className={checkInputHasError('expiresYear') ? 'error' : ''}
+                      mask="99"
                     />
-
                   </S.InputGroup>
                 </S.FormRow>
-                <Button title="Clique aqui para finalizar seu pagamento" type="submit">Finalizar pagamento</Button>
-                <Button title="Clique aqui para retornar para aos campos de endereço" onClick={handleBackToDelivery}>Voltar para a edição de endereço</Button>
+                <Button
+                  type="submit"
+                  title="Clique aqui para finalizar seu pagamento"
+                >
+                  Finalizar pagamento
+                </Button>
+                <Button
+                  type="button"
+                  title="Clique aqui para retornar para aos campos de endereço"
+                  onClick={handleBackToDelivery}
+                >
+                  Voltar para a edição de endereço
+                </Button>
               </>
             )}
           </form>
