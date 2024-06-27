@@ -39,6 +39,7 @@ export const Sidebar = styled.aside`
   }
 
   h3 {
+    padding-bottom: 16px;
     font-size: 16px;
     font-weight: bold;
     color: ${colors.beige};
@@ -80,12 +81,11 @@ export const InputGroup = styled.div<InputGroupProps>`
     padding: 8px;
     background-color: ${colors.beige};
     color: #000;
-    font-weight: bold;
     border: 1px solid ${colors.beige};
     margin-bottom: 18px;
 
     &.error {
-      border: 1px solid red;
+      border: 2px solid red;
     }
   }
 `;

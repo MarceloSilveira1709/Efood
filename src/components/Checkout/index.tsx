@@ -4,11 +4,13 @@ import { usePurchaseMutation } from '../../services/api';
 import { useSelector } from 'react-redux';
 import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
+import { useNavigate } from 'react-router-dom';
 
 import * as S from './styles';
 import { Button } from './styles';
 
 import { RootReducer } from '../../store';
+import { getTotalPrice, parseToBrl } from '../Utils';
 
 interface CheckoutProps {
   setDelivery: (value: boolean) => void;
@@ -22,9 +24,14 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
   const [purchase, { data, isSuccess }] = usePurchaseMutation();
   const { items } = useSelector((state: RootReducer) => state.cart);
 
-  const formAddressIsValid = () => {
-    setIsPaymentVisible(true);
-    setIsDeliveryVisible(false);
+  const navigate = useNavigate();
+
+  const formAddressIsValid = async () => {
+    const isValid = await form.validateForm();
+    if (!Object.keys(isValid).length) {
+      setIsPaymentVisible(true);
+      setIsDeliveryVisible(false);
+    }
   };
 
   const handleBackToDelivery = () => {
@@ -62,20 +69,20 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
       number: Yup.string()
         .min(1, 'Preencha os dados corretamente')
         .required('Campo obrigatório'),
-      cardDisplayName: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      cardDisplayName: Yup.string().when(() =>
+        isPaymentVisible ? Yup.string().required('O campo é obrigatório') : Yup.string()
       ),
-      cardNumber: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      cardNumber: Yup.string().when(() =>
+        isPaymentVisible ? Yup.string().required('O campo é obrigatório') : Yup.string()
       ),
-      cardCode: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      cardCode: Yup.string().when(() =>
+        isPaymentVisible ? Yup.string().required('O campo é obrigatório') : Yup.string()
       ),
-      expiresMonth: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      expiresMonth: Yup.string().when(() =>
+        isPaymentVisible ? Yup.string().required('O campo é obrigatório') : Yup.string()
       ),
-      expiresYear: Yup.string().when((values, schema) =>
-        isPaymentVisible ? schema.required('O campo é obrigatório') : schema
+      expiresYear: Yup.string().when(() =>
+        isPaymentVisible ? Yup.string().required('O campo é obrigatório') : Yup.string()
       ),
     }),
     onSubmit: async (values) => {
@@ -116,6 +123,11 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
     return hasError;
   };
 
+  const handleCompleteOrder = () => {
+    setDelivery(false);
+    navigate('/');
+  };
+
   return (
     <S.CardContainer>
       <S.Overlay />
@@ -140,7 +152,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
               Esperamos que desfrute de uma deliciosa e agradável experiência
               gastronômica. Bom apetite!
             </p>
-            <Button onClick={() => setDelivery(false)}>Concluir</Button>
+            <Button onClick={handleCompleteOrder}>Concluir</Button>
           </div>
         ) : (
           <form onSubmit={form.handleSubmit}>
@@ -239,7 +251,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
             )}
             {isPaymentVisible && (
               <>
-                <h2>Pagamento - Valor a pagar de R$ 190,90</h2>
+                <h2>Pagamento - Valor a pagar {parseToBrl(getTotalPrice(items))}{' '}</h2>
                 <S.InputGroup>
                   <label htmlFor="cardDisplayName">Nome no cartão</label>
                   <input
