@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { usePurchaseMutation } from '../../services/api';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import React, { useState } from 'react';
 import InputMask from 'react-input-mask';
 import { useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ import { Button } from './styles';
 
 import { RootReducer } from '../../store';
 import { getTotalPrice, parseToBrl } from '../Utils';
+import { clear } from '../../store/reducers/cart';
 
 interface CheckoutProps {
   setDelivery: (value: boolean) => void;
@@ -23,6 +24,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
 
   const [purchase, { data, isSuccess }] = usePurchaseMutation();
   const { items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -70,7 +72,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
         .min(1, 'Preencha os dados corretamente')
         .required('Campo obrigatório'),
       cardDisplayName: Yup.string().when(() =>
-        isPaymentVisible ? Yup.string().required('O campo é obrigatório') : Yup.string()
+        isPaymentVisible ? Yup.string().required('O campo é obrigatório') .min(10,) : Yup.string()
       ),
       cardNumber: Yup.string().when(() =>
         isPaymentVisible ? Yup.string().required('O campo é obrigatório') : Yup.string()
@@ -124,6 +126,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
   };
 
   const handleCompleteOrder = () => {
+    dispatch(clear());
     setDelivery(false);
     navigate('/');
   };
@@ -251,7 +254,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
             )}
             {isPaymentVisible && (
               <>
-                <h2>Pagamento - Valor a pagar {parseToBrl(getTotalPrice(items))}{' '}</h2>
+                <h2>Pagamento - Valor a pagar {parseToBrl(getTotalPrice(items))}</h2>
                 <S.InputGroup>
                   <label htmlFor="cardDisplayName">Nome no cartão</label>
                   <input
@@ -272,78 +275,78 @@ const Checkout: React.FC<CheckoutProps> = ({ setDelivery }) => {
                       type="text"
                       name="cardNumber"
                       value={form.values.cardNumber}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                      className={checkInputHasError('cardNumber') ? 'error' : ''}
-                      mask="9999 9999 9999 9999"
-                    />
+                      onChange={
+                        form.handleChange}
+                  onBlur={form.handleBlur}
+                  className={checkInputHasError('cardNumber') ? 'error' : ''}
+                  mask="9999 9999 9999 9999"
+                  />
                   </S.InputGroup>
                   <S.InputGroup maxWidth="100px">
-                    <label htmlFor="cardCode">CVV</label>
-                    <InputMask
-                      id="cardCode"
-                      type="text"
-                      name="cardCode"
-                      value={form.values.cardCode}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                      className={checkInputHasError('cardCode') ? 'error' : ''}
-                      mask="999"
-                    />
+                  <label htmlFor="cardCode">CVV</label>
+                  <InputMask
+                  id="cardCode"
+                  type="text"
+                  name="cardCode"
+                  value={form.values.cardCode}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  className={checkInputHasError('cardCode') ? 'error' : ''}
+                  mask="999"
+                  />
                   </S.InputGroup>
-                </S.FormRow>
-                <S.FormRow>
+                  </S.FormRow>
+                  <S.FormRow>
                   <S.InputGroup maxWidth="155px">
-                    <label htmlFor="expiresMonth">Mês de vencimento</label>
-                    <InputMask
-                      id="expiresMonth"
-                      type="text"
-                      name="expiresMonth"
-                      value={form.values.expiresMonth}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                      className={checkInputHasError('expiresMonth') ? 'error' : ''}
-                      mask="99"
-                    />
+                  <label htmlFor="expiresMonth">Mês de vencimento</label>
+                  <InputMask
+                  id="expiresMonth"
+                  type="text"
+                  name="expiresMonth"
+                  value={form.values.expiresMonth}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  className={checkInputHasError('expiresMonth') ? 'error' : ''}
+                  mask="99"
+                  />
                   </S.InputGroup>
                   <S.InputGroup maxWidth="155px">
-                    <label htmlFor="expiresYear">Ano de vencimento</label>
-                    <InputMask
-                      id="expiresYear"
-                      type="text"
-                      name="expiresYear"
-                      value={form.values.expiresYear}
-                      onChange={form.handleChange}
-                      onBlur={form.handleBlur}
-                      className={checkInputHasError('expiresYear') ? 'error' : ''}
-                      mask="99"
-                    />
+                  <label htmlFor="expiresYear">Ano de vencimento</label>
+                  <InputMask
+                  id="expiresYear"
+                  type="text"
+                  name="expiresYear"
+                  value={form.values.expiresYear}
+                  onChange={form.handleChange}
+                  onBlur={form.handleBlur}
+                  className={checkInputHasError('expiresYear') ? 'error' : ''}
+                  mask="99"
+                  />
                   </S.InputGroup>
-                </S.FormRow>
-                <Button
-                  type="submit"
-                  title="Clique aqui para finalizar seu pagamento"
-                >
+                  </S.FormRow>
+                  <Button
+                                type="submit"
+                                title="Clique aqui para finalizar seu pagamento"
+                              >
                   Finalizar pagamento
-                </Button>
-                <Button
-                  type="button"
-                  title="Clique aqui para retornar para aos campos de endereço"
-                  onClick={handleBackToDelivery}
-                >
+                  </Button>
+                  <Button
+                                type="button"
+                                title="Clique aqui para retornar para aos campos de endereço"
+                                onClick={handleBackToDelivery}
+                              >
                   Voltar para a edição de endereço
-                </Button>
-              </>
-            )}
-          </form>
-        )}
-      </S.Sidebar>
-    </S.CardContainer>
-  );
-};
+                  </Button>
+                  </>
+                  )}
+                  </form>
+                  )}
+                  </S.Sidebar>
+                  </S.CardContainer>
+                  );
+                  };
 
-export default Checkout;
-
+                  export default Checkout
 
 
 

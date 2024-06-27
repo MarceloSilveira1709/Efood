@@ -44,9 +44,8 @@ export const Overlay = styled.div`
 
 export const Close = styled.header`
   position: absolute;
-  top: 16px; /* Ajuste conforme necessário */
-  right: 16px; /* Ajuste conforme necessário */
-  z-index: 3; /* Certifique-se de que esteja acima do modal */
+  top: 7px;
+  right: 7px;
   cursor: pointer;
 `;
 
@@ -58,7 +57,6 @@ export const Button = styled.button`
   font-weight: bold;
   padding: 4px 6px;
   border: none;
-  margin-top: 16px;
   cursor: pointer;
   @media (max-width: ${breakpoints.tablet}) {
     margin-left: 24px;
@@ -86,19 +84,24 @@ export const Image = styled.div`
 `;
 
 export const Taste = styled.h2`
+  margin-top: 32px;
+  margin-bottom: 16px;
   font-size: 18px;
   font-weight: bold;
   @media (max-width: ${breakpoints.tablet}) {
     margin-left: 24px;
     margin-bottom: 5px;
+    margin-top: 10px;
   }
 `;
 
 export const Text = styled.p`
   font-size: 14px;
+  margin-bottom: 16px;
   @media (max-width: ${breakpoints.tablet}) {
-    max-width: 380px;
+    max-width: 400px;
     margin-left: 24px;
+    margin-bottom: 10px
   }
 `;
 
